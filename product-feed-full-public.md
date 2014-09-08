@@ -9,6 +9,21 @@ categories: [Resources]
 
 The following document will explain the product feed supported by **Olapic**.
 
+## Table of Contents
+
+- [Basics](#basics)
+- [XML product feed](#xml-product-feed)
+    - [Start your XML file](#start-your-xml-file)
+    - [Product categorization](#product-categorization)
+    - [`<Product>` element](#product-element)
+    - [Attributes elements of `<Product>` element](#attributes-elements-of-product-element)
+    - [XML Feed Example](#xml-feed-example)
+- [Validating your feed](#validating-your-feed)
+- [Delivering your Product Feed](#delivering-your-product-feed)
+    - [Note: Feed update times](#note-feed-update-times)
+- [Providing a custom Product Feed](#providing-a-custom-product-feed)
+- [Changing the Product Feed](#changing-the-product-feed)
+
 ## Basics
 
 **Product Feed (PF)** is a list of products in your e-commerce store. Olapic requires this feed to create what we call `streams` for your account so you can start tagging the media to specific products in the Moderation Queue. So having the right product feed format is critical for a correct implementation.

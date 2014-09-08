@@ -35,6 +35,7 @@ Example code:
 			olapicCheckout.setAttribute("olapicTransactionId", encodeURIComponent("TRANSACTION_ID"));
 			olapicCheckout.setAttribute("olapicEmail", encodeURIComponent("EMAIL"));
 			olapicCheckout.setAttribute("olapicName", encodeURIComponent("NAME"));
+			olapicCheckout.setAttribute("olapicCurrencyCode", encodeURIComponent("CURRENCY"));
 			olapicCheckout.src="//www.photorank.me/static/js/olapic.checkout.js";
 			d.body.appendChild(olapicCheckout);
 		})(window, document);
@@ -70,6 +71,8 @@ Example code:
 	- The unique transaction ID from your from your store.
 - `AMOUNT` - **required**
 	- The total amount of the entire purchase. Net total amount must be used (before shipping & tax).
+- `Currency` - **Optional**
+	- The ISO 4217 Alphabetic code of the currency. e.g. Use 'EUR' if the Amount value is in Euro. The default value is 'USD' if not passed.
 - `USER_ID` - **required**
 	- The unique user ID from your store. This will identify the user that performed the purchase. If you can't pass the unique user ID, please use the user e-mail address as the value.
 - `EMAIL` - **OPTIONAL**
