@@ -12,17 +12,17 @@ The following document will explain the product feed supported by **Olapic**.
 ## Table of Contents
 
 - [Basics](#basics)
-- [XML product feed](#xml-product-feed)
-    - [Start your XML file](#start-your-xml-file)
-    - [Product categorization](#product-categorization)
-    - [`<Product>` element](#product-element)
-    - [Attributes elements of `<Product>` element](#attributes-elements-of-product-element)
-    - [XML Feed Example](#xml-feed-example)
-- [Validating your feed](#validating-your-feed)
-- [Delivering your Product Feed](#delivering-your-product-feed)
-    - [Note: Feed update times](#note-feed-update-times)
-- [Providing a custom Product Feed](#providing-a-custom-product-feed)
-- [Changing the Product Feed](#changing-the-product-feed)
+- [XML product feed](#XML-product-feed)
+    - [Start your XML file](#Start-your-XML-file)
+    - [Product categorization](#Product-categorization)
+    - [`<Product>` element](#<Product>-element)
+    - [Attributes elements of `<Product>` element](#Attributes-elements-of-<Product>-element)
+    - [XML Feed Example](#XML-Feed-Example)
+- [Validating your feed](#Validating-your-feed)
+- [Delivering your Product Feed](#Delivering-your-Product-Feed)
+    - [Note: Feed update times](#Note:-Feed-update-times)
+- [Providing a custom Product Feed](#Providing-a-custom-Product-Feed)
+- [Changing the Product Feed](#Changing-the-Product-Feed)
 
 ## Basics
 
@@ -76,7 +76,7 @@ You can build the `<Category>` elements using the following children elements:
 | Name | The visible name of the category. | **Yes** |
 | CategoryUniqueID | A unique ID for the category. <br>**Note: The value of this element can not be empty or contain white spaces.** | **Yes** |
 | CategoryUrl | A URL where visitors can shop by this category, if you have one. **Include the full URL, with the schema(http/https)**. **This must be anyURI valid, see below(1)** | Only if you use our *category_based* widget |
-| CategoryParentID | This is to support sub-category levels. If the category is a sub-category with a specific parent category, please use the parent category's CategoryUniqueID within this element | Only if you need sub-category support |
+| CategoryParentID | This is to support sub-category levels. If the category is a sub-category with a specific parent category, please use the parent category's CategoryUniqueID within this element.<br>**Note: The value of this element can not be empty or contain white spaces. If you don't have a valid ID to provide, please don't include the field** | NO |
 
 
 `Categories` node example:
@@ -112,7 +112,7 @@ Here is a list of possible elements you can use under `<Product>`. Please pay at
 | ProductUrl | This is the URL we use when you click "Shop this look" in an Olapic viewer. This must take the visitor to a page to purchase the item. **Include the full URL, with the schema(http/https)**. **This must be anyURI valid, see below(1)**| **Yes** |
 | ImageUrl | This is the URL of the product primery image. The image that most represents your product in your PDP. **This must be anyURI valid, see below(1)**| **Yes** |
 | Description | This is a short and plain text description of the product. We use this in your Olapic Admin page, your visitors will not see it. *No HTML elements are recognized in this element*. | No |
-| CategoryID | This is the unique identifier of the category related with this product. We use this in the *category_based* Widget. <br>**Note: The value here should match the `CategoryUniqueID` of the associated `<Category>` element.** | Only if you use our *category_based* widget |
+| CategoryID | This is the unique identifier of the category related with this product. We use this in the *category_based* Widget. <br>**Note: The value here should match the `CategoryUniqueID` of the associated `<Category>` element. Note: The value of this element can not be empty or contain white spaces. If you don't have a valid ID to provide, please don't include the field** | Only if you use our *category_based* widget |
 | CategoriesID | Contains at least one `<CategoryID>` element. | Only if you have multiples categories associated with this product |
 | EAN | European Article Number, which is used world wide for marking retail goods. Can be a string of digits either 8 or 13 characters long. | No |
 | EANs | Contains at least one `<EAN>` element. | Only if you use `<EAN>` elements or *syndication* |
@@ -124,7 +124,7 @@ Here is a list of possible elements you can use under `<Product>`. Please pay at
 | Stock | This is an integer that represents your stock of this product | No |
 | Availability | This is a bool representing the current status of this product. Should be consistent with your site. We can set `INACTIVE` galleries dynamically based on this value. *Expected values: {true, false, 0, 1}* | No |
 | Color | This is a string with the color name of the product. Useful for color specific products. | No |
-| ParentID | This is to support sub-streams levels. If this stream is not a root stream and, instead, it's a sub-stream of another stream, all you need to do is give us that ProductUniqueID here. We do the rest! Example: Color specific stream has as ParentID the non color specific stream | Only if you need sub-stream support |
+| ParentID | This is to support sub-streams levels. If this stream is not a root stream and, instead, it's a sub-stream of another stream, all you need to do is give us that ProductUniqueID here. We do the rest! Example: Color specific stream has as ParentID the non color specific stream.<br>**Note: The value of this element can not be empty or contain white spaces. If you don't have a valid ID to provide, please don't include the field** | Only if you need sub-stream support |
 
 
 
