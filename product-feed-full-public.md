@@ -18,10 +18,12 @@ The following document will explain the product feed supported by **Olapic**.
     - [`<Product>` element](#<Product>-element)
     - [Attributes elements of `<Product>` element](#Attributes-elements-of-<Product>-element)
     - [XML Feed Example](#XML-Feed-Example)
+      - [Product Hierarchy Explained](#Product-Hierarchy-Explained)
 - [Validating your feed](#Validating-your-feed)
 - [Delivering your Product Feed](#Delivering-your-Product-Feed)
     - [Note: Feed update times](#Note:-Feed-update-times)
 - [Providing a custom Product Feed](#Providing-a-custom-Product-Feed)
+    - [Feed Feature Support](#Feed-Feature-Support)
 - [Changing the Product Feed](#Changing-the-Product-Feed)
 
 ## Basics
@@ -263,11 +265,13 @@ The following is an example of a valid feed you can provide.
 	</Products>
 </Feed>
 ```
-The above contains 4 `<Product>` nodes for sake of brevity. Typically your feed will include all the products you have stored within your e-commerce platform.
+
+#### Product Hierarchy Explained
+The above contains 4 `<Product>` nodes. Typically your feed will include all the products you have stored within your e-commerce platform.
 
 For a better understanding of the product hierarchy requirement, please refer to [this guide](http://9odg7y.axshare.com/home.html).
 
-The product hierarchy is broken down into 2 levels:
+At the simplest level, the product hierarchy is broken down into 2 levels:
 
 - Parent (Style level)
 - Child (Color level)
@@ -278,7 +282,7 @@ Child level `<Product>` will include the `<ParentID>` element to denote the Pare
 
 Theoretically, you can have infinite number of levels. However, please consult your Integration Engineer on best practices on the product hierarchy required by Olapic.
 
-Note that we do not want any "size" specific product nodes unless it is a business requirement for the project.
+**[!] Important Note:** we do not want any "size" specific product nodes unless it is a business requirement for the integration.
 
 
 ## Validating your feed
@@ -323,6 +327,26 @@ If you plan on giving us a custom feed (existing vendor feeds that are not Olapi
 * It must be in a XML, otherwise it can take 10 or more days to process it and we can't guarantee a correct data import. That's why we work with open and stable standards.
 * We require the fields listed as **required**. You can rename them, but they are essential for a good implementation.
 * We cannot guarantee a successful import with custom feeds.
+
+### Feed Feature Support
+
+Olapic supports many different types of feeds. However, the featureset that Olapic can provide is limited by the type of feed that you deliver to us. By default, Olapic standard feed will support the full feature-set. Please refer to the following table for the supported feature across 3 types of feeds:
+
+|                        Olapic Feature                       | Olapic Standard Feed | Google Product Feed | Anything else |
+| ----------------------------------------------------------- | -------------------- | ------------------- | ------------- |
+| Create new products                                         | x                    | x                   | x             |
+| Update existing products                                    | x                    | x                   | x             |
+| Set product availability (using stock or availability flag) | x                    | x                   |               |
+| Deactivate products                                         | x                    |                     |               |
+| Re-activate products                                        | x                    |                     |               |
+| Extra metadata support (stock, color, price)                | x                    | x                   |               |
+| Single Universal ID (UPC, EAN, ISBN, etc) Suppor            | x                    | x                   |               |
+| Multiple Universal ID (UPC, EAN, ISBN, etc) Support         | x                    |                     |               |
+| Multiple Category                                           | x                    | x                   |               |
+| Category Hierarchy                                          | x                    | x                   |               |
+| Category Widget Support                                     | x                    |                     |               |
+| Product Hierarchy (color variants, etc)                     | x                    |                     |               |
+| Schema Validation Support                                   | x                    |                     |               |
 
 ## Changing the Product Feed
 Please note that if you want to change something in your product feed, we will have to be notified to make sure that the data schema does not break. Please contact your Integration Engineer if you have any changes to the feed scheduled.
