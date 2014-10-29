@@ -340,7 +340,7 @@ Olapic supports many different types of feeds. However, the featureset that Olap
 | Deactivate products                                         | x                    |                                |               |
 | Re-activate products                                        | x                    |                                |               |
 | Extra metadata support (stock, color, price)                | x                    | x                              |               |
-| Single Universal ID (UPC, EAN, ISBN, etc) Suppor            | x                    | x                              |               |
+| Single Universal ID (UPC, EAN, ISBN, etc) Support            | x                    | x                              |               |
 | Multiple Universal ID (UPC, EAN, ISBN, etc) Support         | x                    |                                |               |
 | Multiple Category                                           | x                    | x                              |               |
 | Category Hierarchy                                          | x                    | x                              |               |
