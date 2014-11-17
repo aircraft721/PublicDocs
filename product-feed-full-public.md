@@ -330,7 +330,9 @@ If you plan on giving us a custom feed (existing vendor feeds that are not Olapi
 
 ### Feed Feature Support
 
-Olapic supports many different types of feeds. However, the featureset that Olapic can provide is limited by the type of feed that you deliver to us. By default, Olapic standard feed will support the full feature-set. Please refer to the following table for the supported feature across 3 types of feeds:
+Olapic supports many different types of feeds. However, the featureset that Olapic can provide is limited by the type of feed that you deliver to us. 
+
+By default, Olapic standard feed will support the full feature-set. Please refer to the following table for the supported feature across 3 types of feeds, and consult your account team on which product feed would be optimal for your integration:
 
 |                        Olapic Feature                       | Olapic Standard Feed | Google Product Feed (Standard) | Anything else |
 | ----------------------------------------------------------- | -------------------- | ------------------------------ | ------------- |
