@@ -1,11 +1,9 @@
 ---
 layout: article
 title: Checkout pixel implementation guide
-attribution: 
 resource: true
 categories: [Resources]
 ---
-
 
 Olapic checkout pixel will track detailed data about the order that gets processed on the e-commerce store.
 

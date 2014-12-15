@@ -1,11 +1,9 @@
 ---
 layout: article
 title: Olapic Product Feed
-attribution: 
 resource: true
 categories: [Resources]
 ---
-
 
 The following document will explain the product feed supported by **Olapic**.
 
