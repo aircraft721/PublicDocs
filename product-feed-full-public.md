@@ -19,7 +19,7 @@ The following document will explain the product feed supported by **Olapic**.
       - [Product Hierarchy Explained](#Product-Hierarchy-Explained)
 - [Validating your feed](#Validating-your-feed)
 - [Delivering your Product Feed](#Delivering-your-Product-Feed)
-    - [Note: Feed update times](#Note:-Feed-update-times)
+    - [Note: Feed update times](#note-feed-update-times)
 - [Providing a custom Product Feed](#Providing-a-custom-Product-Feed)
     - [Feed Feature Support](#Feed-Feature-Support)
 - [Changing the Product Feed](#Changing-the-Product-Feed)
@@ -280,7 +280,8 @@ Child level `<Product>` will include the `<ParentID>` element to denote the Pare
 
 Theoretically, you can have infinite number of levels. However, please consult your Integration Engineer on best practices on the product hierarchy required by Olapic.
 
-**[!] Important Note:** we do not want any "size" specific product nodes unless it is a business requirement for the integration.
+#### Size Variant Level 
+**[!] Important Note:** We do not want any "size" specific product nodes unless it is a business requirement for the integration. Size levels are visually indistinguishable in product stock images as well as UGC, and their presence in the feed will complicate the moderation process.
 
 
 ## Validating your feed
@@ -337,18 +338,24 @@ By default, Olapic standard feed will support the full feature-set. Please refer
 | Create new products                                         | x                    | x                              | x             |
 | Update existing products                                    | x                    | x                              | x             |
 | Set product availability (using stock or availability flag) | x                    | x                              |               |
-| Deactivate products                                         | x                    |                                |               |
-| Re-activate products                                        | x                    |                                |               |
+| Deactivate products (Availability = INACTIVE)               | x                    | x *                            |               |
+| Re-activate products (Availability = OK)                    | x                    | x *                            |               |
+| Remove products (delete completely)						  | x 					 |    							  | 			  |
 | Extra metadata support (stock, color, price)                | x                    | x                              |               |
-| Single Universal ID (UPC, EAN, ISBN, etc) Support            | x                    | x                              |               |
+| Single Universal ID (UPC, EAN, ISBN, etc) Support           | x                    | x                              |               |
 | Multiple Universal ID (UPC, EAN, ISBN, etc) Support         | x                    |                                |               |
 | Multiple Category                                           | x                    | x                              |               |
 | Category Hierarchy                                          | x                    | x                              |               |
 | Category Widget Support                                     | x                    |                                |               |
-| Product Hierarchy (color variants, etc)                     | x                    |                                |               |
+| Product Hierarchy (color variants, etc)                     | x                    | x                              |               |
 | Schema Validation Support                                   | x                    |                                |               |
 
-**[!] Important Note:** We accept Google feeds that are in accordance to the [Google Merchant Center Products Feed Specification](https://support.google.com/merchants/answer/188494?hl=en).
+**[!] Important Note:** We accept Google feeds that are in accordance to the [Google Merchant Center Products Feed Specification](https://support.google.com/merchants/answer/188494?hl=en) only.
+
+**[**\***]** These features are available with the full import mode only. Please request this from your Olapic account team if you wish to enable this mode.
+
+**Full Import Mode:** If products are removed in the next incoming feed, our import job will detect this as a signal to deactivate the product (set it to INACTIVE).
+
 
 ## Changing the Product Feed
 Please note that if you want to change something in your product feed, we will have to be notified to make sure that the data schema does not break. Please contact your Integration Engineer if you have any changes to the feed scheduled.
