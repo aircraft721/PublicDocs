@@ -143,6 +143,8 @@ We want your organization to have full control of the streams, and in order to a
 | removed | This is a bool you can use to remove products. If you set this to `true` then we will remove the stream associated with this product. Default: false. *Expected values: {true, false, 0, 1}* | No |
 | disabled | This is a bool you can use to disable products. If you set this to `true` then we will set the stream associated with this product as INACTIVE. Default: false. *Expected values: {true, false, 0, 1}* | No |
 
+**Note: Mark products with the appropriate attribute names/values in order to update the product status in Olapic. If the product node does not exist in the feed anymore, our system will not perform any actions against the product in the Olapic system.**
+
 ### XML Feed Example
 The following is an example of a valid feed you can provide.
 
