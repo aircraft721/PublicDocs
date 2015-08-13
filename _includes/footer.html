@@ -22,7 +22,7 @@
 
 		$('article.resource h1, article.resource h2, article.resource h3, article.resource h4').each(function(){
 			var thisText = $(this).text();
-			var anchorText = thisText.replace(/ /g, "-");
+			var anchorText = thisText.replace(/[^A-Za-z& ]/g, "").replace(/ /g, "-").toLowerCase();
 			var anchorLink = '<a class="anchor-link" name="' + anchorText + '" href="#' + anchorText + '"><i class="fa fa-link"></i></a>';
 
 			$(this).attr('id',anchorText);
