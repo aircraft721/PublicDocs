@@ -35,6 +35,7 @@ The checkout pixel should be implemented on the order confirmation page after th
 4. Please refer to the following variables we need placed in the code:
 
 *Required* :
+
 - `PRODUCT_ID` - *required*
     - The unique product ID from your store. This product ID MUST match the product ID being used from the product feed.
 - `PRODUCT_PRICE` - *required*
@@ -44,6 +45,7 @@ The checkout pixel should be implemented on the order confirmation page after th
 
 
 *Optional, but recommended* :
+
 - `CURRENCY` - *optional*
     - The ISO 4217 Alphabetic code of the currency. e.g. Use 'EUR' if the Amount value is in Euro. The default value is 'USD' if not passed.
 - **Segmentation Data** - *optional*
