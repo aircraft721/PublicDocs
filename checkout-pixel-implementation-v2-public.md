@@ -85,7 +85,7 @@ Below script will be executed *asynchronously*. The following example uses a `fo
 
 ```javascript
 //var olapicRequireCheckoutScript function expression is above this (like above example)...
-olapicRequireCheckoutScript('//checkout.photorank.me/olapic.checkout.helper.js', function(){
+olapicRequireCheckoutScript('//photorankstatics-a.akamaihd.net/static/frontend/checkout/olapic.checkout.helper.js', function(){
     // Initialization using API key:
     olapicCheckout.init('UNIQUE_OLAPIC_API_KEY');
     // Add all the Products:
@@ -109,7 +109,7 @@ olapicRequireCheckoutScript('//checkout.photorank.me/olapic.checkout.helper.js',
 ***Note***: Implementing the script as seen below will *not* be asynchronous.
 
 ```html
-<script type="text/javascript" src="//checkout.photorank.me/olapic.checkout.helper.js"></script>
+<script type="text/javascript" src="//photorankstatics-a.akamaihd.net/static/frontend/checkout/olapic.checkout.helper.js"></script>
 <script type="text/javascript">
 olapicCheckout.init('UNIQUE_OLAPIC_API_KEY');
 for (var i = 0; i < productList.length; i++) {
