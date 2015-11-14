@@ -69,7 +69,7 @@ We need the following set of data mapped to the Olapic Checkout Code in order fo
     olapicCheckout.addProduct('PRODUCT_ID', PRODUCT_PRICE);
     ``` 
     
-    You will need to loop through each product that is in the cart with the shorthand operator, to invoke the function for each product and its associated price.
+    You will need to loop through each product that is in the cart with the `olapicCheckout.addProduct` object function, to invoke the function for each product and its associated price.
 
     **IMPORTANT NOTE**: Olapic sums up the purchase data by adding up the price information from the product loop. If there are multiple quantities of the same product being purchased, make sure that the loop takes care of multiple quantity as well. 
 
