@@ -1,6 +1,8 @@
 PublicDocs
 ==========
 
-Public documentation for the Olapic Platform, generated automatically from the *public* pages in https://github.com/Olapic/Documentation.
+Public documentation for the Olapic Platform.
 
-This branch contains the Jekyll site.
+Powered by:
+* Jekyll
+* Github Pages
