@@ -56,8 +56,8 @@ By default, XML feed in Olapic scehma will support the full feature-set. Please 
 | Re-activate products (Availability = OK)                    | x                    | x *                            |               |
 | Remove products (delete completely)						  | x 					 |    							  | 			  |
 | Extra metadata support (stock, color, price)                | x                    | x                              |               |
-| Single Universal ID (UPC, EAN, ISBN, etc) Support           | x                    | x                              |               |
-| Multiple Universal ID (UPC, EAN, ISBN, etc) Support         | x                    |                                |               |
+| Single Universal ID (UPC, EAN) Support           | x                    | x                              |               |
+| Multiple Universal ID (UPC, EAN) Support         | x                    |                                |               |
 | Multiple Category                                           | x                    | x                              |               |
 | Category Hierarchy                                          | x                    | x                              |               |
 | Category Widget Support                                     | x                    |                                |               |
@@ -187,8 +187,6 @@ Here is a list of possible elements you can use under `<Product>`. Please pay at
 | EANs | Contains at least one `<EAN>` element. | Only if you use `<EAN>` elements or *syndication* |
 | UPC | Universal Product Code, which is the 6 - or 12- digit bar code used for standard retail packaging in the United States. The UPC must contain numerals only, with no letters or characters. Further, spaces and hyphens disrupt ***syndication*** matching and must be removed. | **Yes** |
 | UPCs | Contains at least one `<UPC>` element. | Only if you use `<UPC>` elements or *syndication* |
-| ISBN | International Standard Book Number, which is a unique identifier for books and which is intended for commercial use. The number is either 10 or 13 digits long and consists of four or five parts. The different sections of the number can be of different lengths and are usually separated by hyphens (-) or tildes (~). Spaces and hyphens disrupt ***syndication*** matching and must be removed. | **Yes** (if product has multiple UPCs) |
-| ISBNs | Contains at least one `<ISBNs>` element. | Only if you use `<ISBN>` elements or *syndication* |
 | Price | This is the most significative price your visitor can see in you PDP. *Do NOT include the currency*. Only include the number with decimals separeted by '.'. Example: 23.99 | No |
 | Stock | This is an integer that represents your stock of this product | No |
 | Availability | This is a bool representing the current status of this product. Should be consistent with your site. We can set `INACTIVE` galleries dynamically based on this value. *Expected values: {true, false, 0, 1}* | No |
