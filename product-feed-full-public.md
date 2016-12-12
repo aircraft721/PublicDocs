@@ -1,6 +1,6 @@
 ---
 layout: article
-title: Olapic Product Feed
+title: Olapic Product Feed Specifications
 resource: true
 categories: [Resources]
 ---

@@ -6,9 +6,7 @@ baseurl: "/PublicDocs"
 url: "http://olapic.com"
 
 # Build settings
-markdown: redcarpet
-redcarpet:
-  extensions: ["fenced_code_blocks", "autolink", "tables","with_toc_data"]
+markdown: kramdown
 
 permalink: none
 
