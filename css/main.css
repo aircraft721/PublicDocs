@@ -62,13 +62,14 @@ a.anchor-link {
 }
 
 
-/* Replaces bootstrap brand with Olapic */
-.olapic-logo {                
-	background: url('../img/olapic_type_logo_sm.png') no-repeat center;
-	position: absolute;
+/* Override BS nav logo height */
+.navbar-brand {
+	height: 65px;
+}
+
+/* Olapic Logo SVG Container */
+#olapic-logo {
 	height: 100%;
-	width: 165px;
-	top: 0;
 }
 
 /* Hide Bootstrap mobile menu */

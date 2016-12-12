@@ -1,6 +1,6 @@
 ---
 layout: article
-title: Checkout pixel v2 implementation guide
+title: Checkout Code Implementation Guide
 resource: true
 categories: [Resources]
 ---

@@ -1,6 +1,6 @@
 ---
 layout: article
-title: Checkout Pixel Validation Guide
+title: Checkout Code Validation Guide
 resource: true
 categories: [Resources]
 ---
@@ -12,12 +12,12 @@ categories: [Resources]
 
 ## Overview
 
-The Olapic Checkout Pixel allows you to send important data from your conversion funnel to Olapic. The purpose of this code is to capture the data from the orders made by customers and tie the data back to Olapic components or widgets installed on your site. 
+The Olapic Checkout Code allows you to send important data from your conversion funnel to Olapic. The purpose of this code is to capture the data from the orders made by customers and tie the data back to Olapic components or widgets installed on your site. 
 
 
 ## Validation Options
 
-To validate the checkout pixel, you have the following options:
+To validate the checkout code, you have the following options:
 
 ### Olapic Checkout and Validation
 
@@ -35,7 +35,7 @@ If Option 1 is not possible, anyone on your side can make a test purchase and we
 
 *	Open up your browser and navigate to the page with the Olapic widget implemented. Interact with the widget (e.g., click on a UGC, navigation button, etc). Write down the URL of the page.
 *	Add **two** of the same products to the cart.  Add **one** of a different product to the cart.  Write down the product URLs.
-*	Perform checkout. *DevTools should be turned on before you get to this page, otherwise, the pixel request will not be captured in the DevTools.*
+*	Perform checkout. *DevTools should be turned on before you get to this page, otherwise, the checkout request will not be captured in the DevTools.*
 *	At the confirmation page of the checkout process, take note of the URL.
 *	In the Network tab of Chrome DevTools, search for `checkout.gif` (base domain should be `data.photorank.me`)
 *	Right-click the `checkout.gif` request, and click Save as HAR with Content.
