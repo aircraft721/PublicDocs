@@ -5,9 +5,6 @@ resource: true
 categories: [Resources]
 ---
 
-Checkout Pixel Validation Guide
-==========
-
 **Table of Contents**
 
 - [Overview](#overview)
@@ -92,25 +89,25 @@ The `analytics_id` is a unique user identifier used to track impression/interact
 
 	Search for `data.photorank.me` in the Search field in the Network tab of the Dev Tools. Take a close look at the Query String Parameters section of the request. This is where you will validate the data being passed to Olapic's Analytics API:
 
--   Check the *`auth_token`*. This value should match your Olapic API key (Settings &gt; Account Basics)
+	-   Check the *`auth_token`*. This value should match your Olapic API key (Settings &gt; Account Basics)
 
--   Check the *`analytics_id`*. This value should match the analytics_id from Step 1.
+	-   Check the *`analytics_id`*. This value should match the analytics_id from Step 1.
 
--   Check the *`product[]`* parameters for correct product ID and total value.
+	-   Check the *`product[]`* parameter(s) for correct product ID and total value.
 
-    -   The product ID should match the total cost of the product
+			-   The product ID should match the total cost of the product
 
-        -   `Product_ID123:50`
+					-   `Product_ID123:50`
 
-    -   Or this can be itemized:
+			-   Or this can be itemized:
 
-        -   `Product_ID123:25`
+					-   `Product_ID123:25`
 
-        -   `Product_ID123:25`
+					-   `Product_ID123:25`
 
--   Check the *`currency_code`* parameter. You should see the ISO 4217 Alphabetic code of the currency. (e.g. Use 'EUR' if the Amount value is in Euro, ‘USD’ for US Dollars).
+	-   Check the *`currency_code`* parameter. You should see the ISO 4217 Alphabetic code of the currency. (e.g. Use 'EUR' if the Amount value is in Euro, ‘USD’ for US Dollars).
 
-	![Image 4](http://olapic-data.s3.amazonaws.com/publicdocs/img/image4.png)
+		![Image 4](http://olapic-data.s3.amazonaws.com/publicdocs/img/image4.png)
 
 7. **Right click the request, and click "Save as HAR with Content"**
 
