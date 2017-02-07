@@ -2,7 +2,7 @@
 layout: article
 title: Olapic Product Feed Specifications
 resource: true
-categories: [Resources]
+categories: [Product Feed]
 ---
 
 The following document will explain the product feed supported by **Olapic**.

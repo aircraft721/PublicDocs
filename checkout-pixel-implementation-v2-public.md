@@ -2,7 +2,7 @@
 layout: article
 title: Checkout Code Implementation Guide
 resource: true
-categories: [Resources]
+categories: [Checkout Code]
 ---
 
 **Table of Contents**
