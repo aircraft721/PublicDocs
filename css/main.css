@@ -61,6 +61,10 @@ a.anchor-link {
 	font-size: 20px;
 }
 
+.navbar-header {
+	float: none;
+}
+
 
 /* Override BS nav logo height */
 .navbar-brand {
