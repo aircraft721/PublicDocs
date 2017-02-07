@@ -37,37 +37,34 @@ We need the following set of data mapped to the Olapic Checkout Code in order fo
 1. Grab your account specific checkout code from the [Checkout code tab from Settings page](http://www.photorank.me/admin/settings#tabb_checkout). 
     Your code shoud look like the below:
 
-    ```html
-    <script type="text/javascript" data="olapic-checkout">
-    //==== Olapic Require: DO NOT CHANGE
-    var olapicRequireCheckoutScript=(function(oHead){var onError=function(){throw new URIError('Olapic checkout script could not be loaded');};return function(olapicScriptSrc,onLoadCallback){var oScript=document.createElement('script');oScript.type='text\/javascript';oScript.src=olapicScriptSrc;oScript.async=true;oScript.onerror=onError;if(onLoadCallback){if(oScript.addEventListener){oScript.addEventListener('load',onLoadCallback,false);}else if(oScript.readyState){oScript.onreadystatechange=function(){if(!this.readyState||this.readyState==='loaded'||this.readyState==='complete'){onLoadCallback();}};}else{oScript.attachEvent('load',onLoadCallback);}}
-    oHead.appendChild(oScript);};})(document.head||document.getElementsByTagName('head')[0]);
+        <script type="text/javascript" data="olapic-checkout">
+        //==== Olapic Require: DO NOT CHANGE
+        var olapicRequireCheckoutScript=(function(oHead){var onError=function(){throw new URIError('Olapic checkout script could not be loaded');};return function(olapicScriptSrc,onLoadCallback){var oScript=document.createElement('script');oScript.type='text\/javascript';oScript.src=olapicScriptSrc;oScript.async=true;oScript.onerror=onError;if(onLoadCallback){if(oScript.addEventListener){oScript.addEventListener('load',onLoadCallback,false);}else if(oScript.readyState){oScript.onreadystatechange=function(){if(!this.readyState||this.readyState==='loaded'||this.readyState==='complete'){onLoadCallback();}};}else{oScript.attachEvent('load',onLoadCallback);}}
+        oHead.appendChild(oScript);};})(document.head||document.getElementsByTagName('head')[0]);
 
-    // ==== Checkout Code:
-    olapicRequireCheckoutScript('//photorankstatics-a.akamaihd.net/static/frontend/checkout/olapic.checkout.helper.js', function(){
-        // Initialization
-        olapicCheckout.init('XXXXX');
+        // ==== Checkout Code:
+        olapicRequireCheckoutScript('//photorankstatics-a.akamaihd.net/static/frontend/checkout/olapic.checkout.helper.js', function(){
+            // Initialization
+            olapicCheckout.init('XXXXX');
 
-        // Add the Products: Product loop starts. This is where you will store each product purchased info
-        olapicCheckout.addProduct('PRODUCT_ID', PRODUCT_PRICE);
-        // Product loop ends.
+            // Add the Products: Product loop starts. This is where you will store each product purchased info
+            olapicCheckout.addProduct('PRODUCT_ID', PRODUCT_PRICE);
+            // Product loop ends.
 
-        // Add the metadata/attributes
-        olapicCheckout.addAttribute('transactionId', 'TRANSACTION_ID');
-        olapicCheckout.addAttribute('currencyCode', 'CURRENCY');
-        // Add Segmentation Values
-        olapicCheckout.addSegment('SEGMENT_KEY', 'SEGMENT_VALUE');
-        // Send the information
-        olapicCheckout.execute();
-    });
-    </script>
-    ```
+            // Add the metadata/attributes
+            olapicCheckout.addAttribute('transactionId', 'TRANSACTION_ID');
+            olapicCheckout.addAttribute('currencyCode', 'CURRENCY');
+            // Add Segmentation Values
+            olapicCheckout.addSegment('SEGMENT_KEY', 'SEGMENT_VALUE');
+            // Send the information
+            olapicCheckout.execute();
+        });
+        </script>
+        ```
 
 2. Please pay close attention to the "product loop" portion of the code. This is where you see:
 
-    ```js
-    olapicCheckout.addProduct('PRODUCT_ID', PRODUCT_PRICE);
-    ``` 
+        olapicCheckout.addProduct('PRODUCT_ID', PRODUCT_PRICE);
     
     You will need to loop through each product that is in the cart with the `olapicCheckout.addProduct` object function, to invoke the function for each product and its associated price.
 
@@ -75,82 +72,27 @@ We need the following set of data mapped to the Olapic Checkout Code in order fo
 
     For instance, take a look at the following example JSON object for cart data:
 
-    ```js
-    var cartObject = {
-        "products":[
-            {
-                "name": "Awesome Possum T-shirt in Red",
-                "product_id": "APTS-01",
-                "price": 25.00,
-                "quantity": 2
-            },
-            {
-                "name": "Awesome Possum T-shirt in Blue",
-                "product_id": "APTS-02",
-                "price": 26.00,
-                "quantity": 1
-            }
-        ],
-        "currency":"USD",
-        "transaction_id":"XXXYYYZZZ123"
-    }
-    ```
+        var cartObject = {
+            "products":[
+                {
+                    "name": "Awesome Possum T-shirt in Red",
+                    "product_id": "APTS-01",
+                    "price": 25.00,
+                    "quantity": 2
+                },
+                {
+                    "name": "Awesome Possum T-shirt in Blue",
+                    "product_id": "APTS-02",
+                    "price": 26.00,
+                    "quantity": 1
+                }
+            ],
+            "currency":"USD",
+            "transaction_id":"XXXYYYZZZ123"
+        }
 
     The loop would look like this:
 
-    ```js
-    for (var i = cartObject.products.length - 1; i >= 0; i--) {
-        var product = cartObject.products[i];
-
-        for (var c = product.quantity - 1; c >= 0; c--) {
-            olapicCheckout.addProduct(product.product_id, product.price);
-        };
-    };
-    ```
-
-    
-3. Swap out the second part of the function arguments (transaction ID and currency) with each of the appropriate parameter/variables from your site. 
-
-    This is where you see:
-
-    ```js
-    olapicCheckout.addAttribute('transactionId', 'TRANSACTION_ID');
-    olapicCheckout.addAttribute('currencyCode', 'CURRENCY');
-    ```
-
-    Using the example `cartObject` from above, the swap looks like this:
-
-    ```js
-    olapicCheckout.addAttribute('transactionId', cartObject.transaction_id);
-    olapicCheckout.addAttribute('currencyCode', cartObject.currency);
-    ```
-
-4. **OPTIONAL**: You can use `addSegment` to provide segmentation data to Olapic. You can customize the key & value using the following function:
-
-    ```js
-    olapicCheckout.addSegment('SEGMENT_KEY', 'SEGMENT_VALUE');
-    ```
-
-    Let's add a custom segment here for demonstration:
-
-    ```js
-    olapicCheckout.addSegment('AB_test', 'true');
-    ```
-
-4. Voila! That's it. See below for what the final output should look like:
-
-    ```html
-    <script type="text/javascript" data="olapic-checkout">
-    //==== Olapic Require: DO NOT CHANGE
-    var olapicRequireCheckoutScript=(function(oHead){var onError=function(){throw new URIError('Olapic checkout script could not be loaded');};return function(olapicScriptSrc,onLoadCallback){var oScript=document.createElement('script');oScript.type='text\/javascript';oScript.src=olapicScriptSrc;oScript.async=true;oScript.onerror=onError;if(onLoadCallback){if(oScript.addEventListener){oScript.addEventListener('load',onLoadCallback,false);}else if(oScript.readyState){oScript.onreadystatechange=function(){if(!this.readyState||this.readyState==='loaded'||this.readyState==='complete'){onLoadCallback();}};}else{oScript.attachEvent('load',onLoadCallback);}}
-    oHead.appendChild(oScript);};})(document.head||document.getElementsByTagName('head')[0]);
-
-    // ==== Checkout Code:
-    olapicRequireCheckoutScript('//photorankstatics-a.akamaihd.net/static/frontend/checkout/olapic.checkout.helper.js', function(){
-        // Initialization
-        olapicCheckout.init('XXXXX');
-
-        // Add the Products: Product loop starts. This is where you will store each product purchased info
         for (var i = cartObject.products.length - 1; i >= 0; i--) {
             var product = cartObject.products[i];
 
@@ -158,24 +100,65 @@ We need the following set of data mapped to the Olapic Checkout Code in order fo
                 olapicCheckout.addProduct(product.product_id, product.price);
             };
         };
-        // Product loop ends.
 
-        // Add the metadata/attributes
+    
+3. Swap out the second part of the function arguments (transaction ID and currency) with each of the appropriate parameter/variables from your site. 
+
+    This is where you see:
+
+        olapicCheckout.addAttribute('transactionId', 'TRANSACTION_ID');
+        olapicCheckout.addAttribute('currencyCode', 'CURRENCY');
+
+    Using the example `cartObject` from above, the swap looks like this:
+
         olapicCheckout.addAttribute('transactionId', cartObject.transaction_id);
         olapicCheckout.addAttribute('currencyCode', cartObject.currency);
-        // Add Segmentation Values
+
+4. **OPTIONAL**: You can use `addSegment` to provide segmentation data to Olapic. You can customize the key & value using the following function:
+
+        olapicCheckout.addSegment('SEGMENT_KEY', 'SEGMENT_VALUE');
+
+    Let's add a custom segment here for demonstration:
+
         olapicCheckout.addSegment('AB_test', 'true');
-        // Send the information
-        olapicCheckout.execute();
-    });
-    </script>
-    ```
+
+4. Voila! That's it. See below for what the final output should look like:
+
+        <script type="text/javascript" data="olapic-checkout">
+        //==== Olapic Require: DO NOT CHANGE
+        var olapicRequireCheckoutScript=(function(oHead){var onError=function(){throw new URIError('Olapic checkout script could not be loaded');};return function(olapicScriptSrc,onLoadCallback){var oScript=document.createElement('script');oScript.type='text\/javascript';oScript.src=olapicScriptSrc;oScript.async=true;oScript.onerror=onError;if(onLoadCallback){if(oScript.addEventListener){oScript.addEventListener('load',onLoadCallback,false);}else if(oScript.readyState){oScript.onreadystatechange=function(){if(!this.readyState||this.readyState==='loaded'||this.readyState==='complete'){onLoadCallback();}};}else{oScript.attachEvent('load',onLoadCallback);}}
+        oHead.appendChild(oScript);};})(document.head||document.getElementsByTagName('head')[0]);
+
+        // ==== Checkout Code:
+        olapicRequireCheckoutScript('//photorankstatics-a.akamaihd.net/static/frontend/checkout/olapic.checkout.helper.js', function(){
+            // Initialization
+            olapicCheckout.init('XXXXX');
+
+            // Add the Products: Product loop starts. This is where you will store each product purchased info
+            for (var i = cartObject.products.length - 1; i >= 0; i--) {
+                var product = cartObject.products[i];
+
+                for (var c = product.quantity - 1; c >= 0; c--) {
+                    olapicCheckout.addProduct(product.product_id, product.price);
+                };
+            };
+            // Product loop ends.
+
+            // Add the metadata/attributes
+            olapicCheckout.addAttribute('transactionId', cartObject.transaction_id);
+            olapicCheckout.addAttribute('currencyCode', cartObject.currency);
+            // Add Segmentation Values
+            olapicCheckout.addSegment('AB_test', 'true');
+            // Send the information
+            olapicCheckout.execute();
+        });
+        </script>
 
 ## Non-async load method 
 
 ***Note***: Implementing the script as seen below will *not* be asynchronous.
 
-```html
+```
 <script type="text/javascript" src="//photorankstatics-a.akamaihd.net/static/frontend/checkout/olapic.checkout.helper.js"></script>
 <script type="text/javascript">
     olapicCheckout.init('UNIQUE_OLAPIC_API_KEY');
