@@ -14,6 +14,12 @@ body {
 	margin-bottom: 60px;
 	padding-bottom: 60px;
 }
+
+.home .col-md-3 ul {
+	padding-left: 20px;
+	font-size: 14px;
+}
+
 #footer {
 	position: absolute;
 	bottom: 0;

@@ -1,6 +1,6 @@
 ---
 layout: article
-title: Widget Load Optimization Guide
+title: Load Optimization Guide
 resource: true
 categories: [Javascript Widget]
 ---
