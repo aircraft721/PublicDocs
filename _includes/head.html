@@ -7,15 +7,15 @@
 	    <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
 	    <meta name="viewport" content="width=device-width">
 	    <meta name="description" content="{{ site.description }}">
-	    <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+	    <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.url }}">
 
 	    <!-- Custom CSS -->
-		<!-- <link rel="stylesheet" href="{{ "/css/bootstrap.css" | prepend: site.baseurl }}"> -->
+		<!-- <link rel="stylesheet" href="{{ "/css/bootstrap.css" | prepend: site.url }}"> -->
 		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
 
-		<link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}">
-		<link rel="stylesheet" href="{{ "/css/github-markdown.css" | prepend: site.baseurl }}">
-		<link rel="stylesheet" href="{{ "/css/highlight/github.css" | prepend: site.baseurl }}">
+		<link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.url }}">
+		<link rel="stylesheet" href="{{ "/css/github-markdown.css" | prepend: site.url }}">
+		<link rel="stylesheet" href="{{ "/css/highlight/github.css" | prepend: site.url }}">
 
 	</head>
