@@ -2,7 +2,8 @@
 layout: article
 title: Checkout Code Validation Guide
 resource: true
-categories: [Resources]
+categories: [Checkout Code]
+redirect_from: checkout-pixel-validation-guide.html
 ---
 
 **Table of Contents**

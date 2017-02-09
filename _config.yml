@@ -2,8 +2,7 @@
 title: Olapic Public Documentation
 email: support@olapic.com
 description: "This documentation contains all public documentation."
-baseurl: "/PublicDocs"
-url: "http://olapic.com"
+url: "http://developer.olapic.com"
 
 # Build settings
 markdown: kramdown
@@ -12,4 +11,9 @@ highlighter: rouge
 permalink: none
 
 # Custom settings
-category-list: [Resources]
+category-list: [Javascript Widget, Checkout Code, Product Feed]
+collections: 
+  articles: 
+    output: true
+gems:
+  - jekyll-redirect-from

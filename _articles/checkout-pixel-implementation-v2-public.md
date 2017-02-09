@@ -2,7 +2,8 @@
 layout: article
 title: Checkout Code Implementation Guide
 resource: true
-categories: [Resources]
+categories: [Checkout Code]
+redirect_from: checkout-pixel-implementation-v2-public.html
 ---
 
 **Table of Contents**
