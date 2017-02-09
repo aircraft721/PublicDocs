@@ -1,7 +1,7 @@
 # Site settings
-title: Olapic Public Documentation
-email: support@olapic.com
-description: "This documentation contains all public documentation."
+title: Olapic - Developer Resources
+email: jae@olapic.com
+description: "Developer resources for the Olapic platform."
 url: "http://developer.olapic.com"
 
 # Build settings
