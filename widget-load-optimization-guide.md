@@ -11,7 +11,7 @@ The following document will cover the optimization techniques in regards to the 
 
 - [Overview](#overview)
 - [Load Sequence Control](#load-sequence-control)
-  - [Example 1 - Sequence Control Over `script` Tags](#example---sequence-control-over-script-tags)
+  - [Example 1 - Moving the `<script>` Tag](#example---moving-the-script-tag)
   - [Example 2 - Using the SDK Load Method](#example---using-the-sdk-load-method)
 - [Use Appropriate Image Size](#use-appropriate-image-size)
 - [Lazy Loading Image Assets](#lazy-loading-image-assets)
@@ -19,19 +19,21 @@ The following document will cover the optimization techniques in regards to the 
 
 ## Overview
 
-At Olapic, we understand that Olapic Javascript Widgets are implemented across various site environments with varying degrees of third party integrations already implemente on the page.
+At Olapic, we understand that Olapic Javascript Widgets are implemented across various site environments with varying degrees of third party integrations loaded in parallel.
 
-In efforts to keep the browser resource utilization low, you can follow our best optimization techniques to lower the overall footprint of the Olapic Javascript Widget takes up on the page.
+In efforts to keep the browser resource utilization low, you can follow our best optimization techniques to lower the overall footprint of the Olapic Javascript Widget.
 
 ## Load Sequence Control
-The `async` attribute in our widget code means that Olapic code will not block any other scripts from loading. However, the browser thread will still be allocated to initially load the Olapic script (as any other resource on the page). If you have any other content on the page that you would like to prioritize ahead of loading Olapic assets, move the script tag in the source code of the page or utilize SDK load method to manually define when the widget should load. 
+The `async` attribute in our widget code means that Olapic code will not block any other scripts from loading. However, the browser thread is still allocated to load the Olapic script (as any other resource on the page). If you want to prioritize other scripts ahead of the Olapic script, you can move the script tag towards the bottom of the page or utilize the Olapic SDK load method to manually define when the widget should load (e.g., `$(document).ready`).
 
-Tag managers are also great tools to control load sequence of resources.
+Tag management tools are also a great way to control the load sequence of resources on your page.
 
 See below for some specific examples:
 
-### Example 1 - Sequence Control Over `<script>` Tags
-Moving the script tag: Place the Olapic <script> after the scripts that you wish to prioritize. This is the easiest method.
+### Example 1 - Moving the `<script>` Tag
+Place the Olapic <script> after the scripts that you wish to prioritize. This is the easiest method.
+
+See below for a code example:
 
 ```
 <html>

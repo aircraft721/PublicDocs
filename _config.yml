@@ -2,7 +2,6 @@
 title: Olapic Public Documentation
 email: support@olapic.com
 description: "This documentation contains all public documentation."
-baseurl: "/PublicDocs"
 url: "http://developer.olapic.com"
 
 # Build settings

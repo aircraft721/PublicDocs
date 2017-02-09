@@ -33,6 +33,6 @@ Powered by:
       Server running... press ctrl-c to stop.
     ```
 
-4. The static site will be available at [http://127.0.0.1:4000/PublicDocs/](http://127.0.0.1:4000/PublicDocs/)
+4. The static site will be available at [http://127.0.0.1:4000/](http://127.0.0.1:4000/)
 
 5. Start editing documents!
