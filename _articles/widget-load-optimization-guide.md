@@ -30,7 +30,7 @@ Tag management tools are also a great way to control the load sequence of resour
 See below for some specific examples:
 
 ### Example 1 - Moving the `<script>` Tag
-Place the Olapic `<script>` tag after the scripts that you wish to prioritize. This is the easiest method.
+Place the Olapic `<script>` tag _after_ the scripts that you wish to prioritize. This is the easiest method.
 
 See below for a code example:
 
@@ -55,20 +55,26 @@ See below for a code example:
 </html>
 {% endhighlight %}
 
+**Note:** Please beware that moving the Olapic script lower on the page may result in a delayed "pop-in" effect depending on the speed of the prioritized assets being loaded on the page.
+
 ### Example 2 - Using the SDK Load Method 
-The Olapic SDK load method gives you best flexibility in terms of programmatically invoking the widget on demand. Here's the detailed step-by-step technical guide: [https://olapic1.zendesk.com/hc/en-us/articles/203456360-SDK-Widget-Load-Method](https://olapic1.zendesk.com/hc/en-us/articles/203456360-SDK-Widget-Load-Method).
+The Olapic SDK Load method gives you the ability to programmatically invoke the widget load on demand (i.e., `$(document).ready()`).
+
+Please refer to our detailed step-by-step technical guide: [https://olapic1.zendesk.com/hc/en-us/articles/203456360-SDK-Widget-Load-Method](https://olapic1.zendesk.com/hc/en-us/articles/203456360-SDK-Widget-Load-Method).
 
 ## Use Appropriate Image Size
-Our API provides different versions of the static image assets for you to pick and choose from. See the **Media Sizing Options** section of our API documentation for specific details. 
+Our API provides different versions of the static image assets for you to pick and choose from. Choosing the right image size for different contexts can be a night and day difference.
 
-Link: [http://apiv2-docs.photorank.me/#header-media-sizing-options](http://apiv2-docs.photorank.me/#header-media-sizing-options)
+Please refer to the the **Media Sizing Options** section of our API documentation for more details on the different available assets we provide: [http://apiv2-docs.photorank.me/#header-media-sizing-options](http://apiv2-docs.photorank.me/#header-media-sizing-options)
 
 You can also use different image sizing in the template editor as well:
 
-![](./img/optimization-js-template.jpg)
+![](../img/optimization-js-template.jpg)
 
 ## Lazy Loading Image Assets
-Incorporate lazy load logic into Carousel Widgets, only the photos within the user view will be loaded. Here's sample code to make the Olapic Carousel widget lazy load, make sure to make minor adjustments to the item and callbacks file depending on the existing markup.
+With the Carousel widgets, you can implement custom logic to only load the photos within the user's viewport.
+
+You will find below the sample code to implement the lazy-load functionality for the Olapic Carousel widget. Please make sure to make minor adjustments to the `JS Callbacks` and `Item` templates depending on your existing markup.
 
 **JS Callbacks:**
 
@@ -110,7 +116,9 @@ OlapicCallback.olapicSliderAfterRender = function(w){
 {% endhighlight %}
 
 ## Configure Number of Photos
-Optimize the # of photos that gets loaded in the widget depending on the use case. You can configure this in the respective Widget Configurations:
+You can optimize the number of photos that initially loads for widgets depending on the use case. 
 
-![](./img/optimization-widget-config.jpg)
+You can configure this in the respective Widget Configurations:
+
+![](../img/optimization-widget-config.jpg)
 

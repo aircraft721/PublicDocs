@@ -15,3 +15,5 @@ category-list: [Javascript Widget, Checkout Code, Product Feed]
 collections: 
   articles: 
     output: true
+gems:
+  - jekyll-redirect-from
