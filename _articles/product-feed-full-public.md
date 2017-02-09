@@ -3,6 +3,7 @@ layout: article
 title: Olapic Product Feed Specifications
 resource: true
 categories: [Product Feed]
+permalink: product-feed-full-public.html
 ---
 
 The following document will explain the product feed supported by **Olapic**.

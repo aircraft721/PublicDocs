@@ -18,7 +18,6 @@ The following document will cover the optimization techniques in regards to the 
 - [Configure Number of Photos](#configure-number-of-photos)
 
 ## Overview
-
 At Olapic, we understand that Olapic Javascript Widgets are implemented across various site environments with varying degrees of third party integrations loaded in parallel.
 
 In efforts to keep the browser resource utilization low, you can follow our best optimization techniques to lower the overall footprint of the Olapic Javascript Widget.
@@ -31,11 +30,11 @@ Tag management tools are also a great way to control the load sequence of resour
 See below for some specific examples:
 
 ### Example 1 - Moving the `<script>` Tag
-Place the Olapic <script> after the scripts that you wish to prioritize. This is the easiest method.
+Place the Olapic `<script>` tag after the scripts that you wish to prioritize. This is the easiest method.
 
 See below for a code example:
 
-```
+{% highlight html %}
 <html>
 <head>
     <meta charset="UTF-8">
@@ -54,11 +53,10 @@ See below for a code example:
     <script type="text/javascript" src="script_C.js"></script>
 </body>
 </html>
-```
+{% endhighlight %}
 
 ### Example 2 - Using the SDK Load Method 
-
-The Olapic SDK load method gives you best flexibility in terms of programmatically invoking the widget on demand. Here's the detailed step-by-step technical guide: https://olapic1.zendesk.com/hc/en-us/articles/203456360-SDK-Widget-Load-Method.
+The Olapic SDK load method gives you best flexibility in terms of programmatically invoking the widget on demand. Here's the detailed step-by-step technical guide: [https://olapic1.zendesk.com/hc/en-us/articles/203456360-SDK-Widget-Load-Method](https://olapic1.zendesk.com/hc/en-us/articles/203456360-SDK-Widget-Load-Method).
 
 ## Use Appropriate Image Size
 Our API provides different versions of the static image assets for you to pick and choose from. See the **Media Sizing Options** section of our API documentation for specific details. 
@@ -74,38 +72,42 @@ Incorporate lazy load logic into Carousel Widgets, only the photos within the us
 
 **JS Callbacks:**
 
-    <script type="text/javascript">
-    var OlapicCallback = OlapicCallback || {};
-    OlapicCallback.olapicSliderAfterRender = function(w){
-        var $self = oQuery('#' + w.wrapperId);
-        var firstLoad = Math.ceil(window.screen.availWidth / 277) + 1;
+{% highlight html %}
+<script type="text/javascript">
+var OlapicCallback = OlapicCallback || {};
+OlapicCallback.olapicSliderAfterRender = function(w){
+    var $self = oQuery('#' + w.wrapperId);
+    var firstLoad = Math.ceil(window.screen.availWidth / 277) + 1;
+    
+    oQuery('.olapic-carousel .olapic-item', $self).each(function(i, val) { 
+        if (i < firstLoad) {
+            oQuery(this).css('background-image','url(' + oQuery(this).attr('data-image') + ')').data( 'loaded' , '1' );
+        }
+    });
+    oQuery('.olapic-nav-button', $self).click(function() {
+        var $previous = oQuery('.olapic-carousel .olapic-item', $self).filter(function() { 
+            return oQuery(this).data('loaded') != true 
+        });
         
-        oQuery('.olapic-carousel .olapic-item', $self).each(function(i, val) { 
-            if (i < firstLoad) {
-                oQuery(this).css('background-image','url(' + oQuery(this).attr('data-image') + ')').data( 'loaded' , '1' );
-            }
-        });
-        oQuery('.olapic-nav-button', $self).click(function() {
-            var $previous = oQuery('.olapic-carousel .olapic-item', $self).filter(function() { 
-                return oQuery(this).data('loaded') != true 
-            });
-            
-            if ( oQuery(this).hasClass('olapic-nav-next') ) {
-                $previous.first().css('background-image','url(' + $previous.first().attr('data-image') + ')').data('loaded','1');
-            } else {
-                $previous.last().css('background-image','url(' + $previous.last().attr('data-image') + ')').data('loaded','1');
-            }
-        });
-    };
-    </{{!}}script>
+        if ( oQuery(this).hasClass('olapic-nav-next') ) {
+            $previous.first().css('background-image','url(' + $previous.first().attr('data-image') + ')').data('loaded','1');
+        } else {
+            $previous.last().css('background-image','url(' + $previous.last().attr('data-image') + ')').data('loaded','1');
+        }
+    });
+};
+</{{!}}script>
+{% endhighlight %}
 
 **Item:**
 
-    <li class="{{this.source}}">
-      <a href="#" class="olapic-item" data-url="{{this._links.self.href}}" title="{{this.caption}}" data-image="{{this.images.mobile}}">
-        <span class="olapic-type-{{this.type}}"><i></i></span>
-      </a>
-    </li>
+{% highlight html %}
+<li class="{{this.source}}">
+  <a href="#" class="olapic-item" data-url="{{this._links.self.href}}" title="{{this.caption}}" data-image="{{this.images.mobile}}">
+    <span class="olapic-type-{{this.type}}"><i></i></span>
+  </a>
+</li>
+{% endhighlight %}
 
 ## Configure Number of Photos
 Optimize the # of photos that gets loaded in the widget depending on the use case. You can configure this in the respective Widget Configurations:

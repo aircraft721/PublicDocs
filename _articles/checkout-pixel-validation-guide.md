@@ -3,6 +3,7 @@ layout: article
 title: Checkout Code Validation Guide
 resource: true
 categories: [Checkout Code]
+permalink: checkout-pixel-validation-guide.html
 ---
 
 **Table of Contents**

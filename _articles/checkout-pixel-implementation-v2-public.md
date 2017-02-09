@@ -3,6 +3,7 @@ layout: article
 title: Checkout Code Implementation Guide
 resource: true
 categories: [Checkout Code]
+permalink: checkout-pixel-implementation-v2-public.html
 ---
 
 **Table of Contents**

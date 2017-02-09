@@ -4,7 +4,6 @@ layout: index
 
 <div class="home">
 
-
   <div class="container">
     <div class="row">
     <div class="col-md-3">
@@ -20,11 +19,12 @@ layout: index
     <div class="col-md-3">
       <h2>{{ cat }}</h2>
       <ul>
-      {% for page in site.pages %}
-        {% if page.resource == true %}
-          {% for pc in page.categories %}
-            {% if pc == cat %}
-            <li><a href="{{ site.url }}{{ page.url }}">{{ page.title }}</a></li>
+
+      {% for article in site.articles %}
+        {% if article.resource == true %}
+          {% for ac in article.categories %}
+            {% if ac == cat %}
+            <li><a href="{{ site.url }}{{ article.url }}">{{ article.title }}</a></li>
             {% endif %}   <!-- cat-match-p -->
           {% endfor %}  <!-- page-category -->
         {% endif %}   <!-- resource-p -->

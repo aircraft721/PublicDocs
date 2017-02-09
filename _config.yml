@@ -12,3 +12,6 @@ permalink: none
 
 # Custom settings
 category-list: [Javascript Widget, Checkout Code, Product Feed]
+collections: 
+  articles: 
+    output: true
