@@ -2,7 +2,7 @@
 layout: article
 title: Olapic Standard Facebook Retargeting Export
 resource: true
-categories: [Exports]
+categories: [Data Export]
 ---
 
 ## Overview

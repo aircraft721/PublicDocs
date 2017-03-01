@@ -2,7 +2,7 @@
 layout: article
 title: Olapic Product Feed Specifications
 resource: true
-categories: [Product Feed]
+categories: [Data Import]
 redirect_from: product-feed-full-public.html
 ---
 
