@@ -58,7 +58,9 @@ extension, unix line ending, header row per below.
 | 4 | Price | The Product Price as passed thru on the product feed sent to Olapic. |
 | 5 | Creator | &quot;Stock&quot; if the subsequent &quot;ImageUrl&quot; field is the stock photo from the client&#39;s product feed; &quot;Olapic&quot; if the &quot;ImageUrl&quot; is UGC collected by Olapic. Please note that if there is no Published with Rights UGC associated with that product, the &quot;Stock&quot; flag value will appear.  Otherwise the best UGC associated with that product. |
 | 6 | ImageUrl | Image URL of either the stock photo or the best Published with Rights UGC associated with that product.<br><br>Please note that with an Olapic UGC image url, the size and type of of the image you would like to use can be surfaced by updating a specific part of the url.  It is the &quot;normal&quot; part in this example url:  https://photorankmedia-a.akamaihd.net/media/7/d/h/7dhejp3/**normal**.jpg.<br><br>However, you can update on your end as follows:<br>- square - 90x90 px image. Cropped, does not maintain ratio.<br>- thumbnail - 150x150 px image. Maintains ratio.<br>- mobile - 320x320 px image. Maintains ratio.<br>- normal - 640x640 px image. Maintains ratio.<br>- original - Original image without modifications.|
+
 <br>
+
 ##### Sample Default File Layout:
 
 | **ProductID** | **Title** | **URL** | **Price** | **Creator** | **ImageUrl** |
@@ -67,7 +69,9 @@ extension, unix line ending, header row per below.
 | 177 | Classic Plaid | [http://www.someolapicclient.com/product/176/classicplaid/index.tmpl](http://www.someolapicclient.com/product/176/classicplaid/index.tmpl) | 35.00 | Olapic | [https://photorankmedia-a.akamaihd.net/media/d/2/i/socno71/normal.jpg](https://photorankmedia-a.akamaihd.net/media/d/2/i/socno71/normal.jpg) |
 | 201 | Biker Jacket | [http://www.someolapicclient.com/product/201/daisyshirt/index.tmpl](http://www.someolapicclient.com/product/201/daisyshirt/index.tmpl) | 99.50 | Stock | [http://www.someolapicclient/images/products/152x358/SOC201\_152x358.jpg](http://www.someolapicclient/images/products/152x358/SOC201_152x358.jpg) |
 | 151 | Pleated Maxi | [http://www.someolapicclient.com/product/151/pleatmaxi/index.tmpl](http://www.someolapicclient.com/product/151/pleatmaxi/index.tmpl) | 55.99 | Olapic | [https://photorankmedia-a.akamaihd.net/media/d/2/i/socno25/normal.jpg](https://photorankmedia-a.akamaihd.net/media/d/2/i/socno25/normal.jpg) |
+
 <br>
+
 #### File Layout With Additional Images Option In Separate Fields:
 
 | **Position** | **Header Field Name** | **Description / Notes** |
@@ -88,7 +92,9 @@ extension, unix line ending, header row per below.
 | 14 | Image\_8 | The image url of the eighth best UGC associated with that product, if available.  Empty if none available. |
 | 15 | Image\_9 | The image url of the ninth best UGC associated with that product, if available.  Empty if none available. |
 | 16 | Image\_10 | The image url of the tenth best UGC associated with that product, if available.  Empty if none available. |
+
 <br>
+
 #### File Layout With Additional Images Option In One Field Plus Category Option:
 
 | **Position** | **Header Field Name** | **Description / Notes** |
