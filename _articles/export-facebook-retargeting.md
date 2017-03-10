@@ -1,17 +1,19 @@
 ---
 layout: article
-title: Olapic Standard Facebook Retargeting Export
+title: Standard Facebook Retargeting Export
 resource: true
 categories: [Exports]
 ---
 
 ## Overview
 
-Olapic offers a standard, daily, full-file refresh, flat file export of product id's and the best User Generated Content (UGC) associated with that product id for that day that can be used for Facebook retargeting ad purposes. The feed’s format was designed per [*Facebook’s Product Catalog Guidelines*](https://developers.facebook.com/docs/marketing-api/dynamic-product-ads/product-catalog).
+Olapic offers a flat file CSV export solution (including basic product information and the associated best user generated content) for the purpose of integration curated UGC (user generated content) with Facebook's retargeting ads. The feed’s format was designed per [*Facebook’s Product Catalog Guidelines*](https://developers.facebook.com/docs/marketing-api/dynamic-product-ads/product-catalog). The associated UGC product images included in the CSV will be curated by the client, and have rights & permissions obtained from the original user who generated the photo.
 
-The UGC outputted will be an image-type, media content (photos) that both 1) the client has obtained rights and permissions to share from the user who generated the photo and 2) has been curated and approved for publishing by the client (Published with Rights UGC).
+There are two choices in regards to the inclusion of product image(s) in the feed:
+* The image with the highest Photorank score associated with the product. Photorank is Olapic’s proprietary algorithm scoring system that predicts the success of a photo based on 40+ attributes.
+* The image with the highest click-through rate (CTR).
 
-There is the option to either have the photo with the highest Photorank score associated with that product chosen, or the photo with the highest click-through rate (CTR). Photorank is Olapic’s proprietary algorithm scoring system that predicts the success of a photo based on 40+ criteria. Also note that if there is no Published with Rights UGC associated with that Stream, then that product id record will be excluded from the feed.
+Also note that if there is no rights-approved UGC associated with the product, the product id record will be excluded from the feed.
 
 ## File Specifications
 
@@ -35,7 +37,9 @@ extension, Unix line ending, header row per below.
 
 **File Layout Options:**
 
-1.  UGC Image URLs: best image associated with the product, OR up to 10 best images (in one field, comma separated).
+1. UGC Image URL options:
+  * Best image associated with the product (default)
+  * Up to ten best images associated with the product (in one field, comma separated)
 
 ##### File Layout:
 
