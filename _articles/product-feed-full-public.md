@@ -59,7 +59,7 @@ By default, XML feed in Olapic scehma will support the full feature-set. Please 
 | Extra metadata support (stock, color, price)                | x                    | x                              |               |
 | Single Universal ID (UPC, EAN) Support           | x                    | x                              |               |
 | Multiple Universal ID (UPC, EAN) Support         | x                    |                                |               |
-| Multiple Category                                           | x                    | x                              |               |
+| Multiple Category                                           | x                    |                                |               |
 | Category Hierarchy                                          | x                    | x                              |               |
 | Category Widget Support                                     | x                    |                                |               |
 | Product Hierarchy (color variants, etc)                     | x                    | x                              |               |
