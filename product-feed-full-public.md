@@ -1,9 +1,8 @@
 ---
 layout: article
-title: Olapic Product Feed Specifications
+title: Olapic Product Feed
 resource: true
-categories: [Product Feed]
-redirect_from: product-feed-full-public.html
+categories: [Resources]
 ---
 
 The following document will explain the product feed supported by **Olapic**.
@@ -59,7 +58,7 @@ By default, XML feed in Olapic scehma will support the full feature-set. Please 
 | Extra metadata support (stock, color, price)                | x                    | x                              |               |
 | Single Universal ID (UPC, EAN) Support           | x                    | x                              |               |
 | Multiple Universal ID (UPC, EAN) Support         | x                    |                                |               |
-| Multiple Category                                           | x                    |                                |               |
+| Multiple Category                                           | x                    | x                              |               |
 | Category Hierarchy                                          | x                    | x                              |               |
 | Category Widget Support                                     | x                    |                                |               |
 | Product Hierarchy (color variants, etc)                     | x                    | x                              |               |
