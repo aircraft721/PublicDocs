@@ -145,7 +145,7 @@ You can build the `<Category>` elements using the following children elements:
 |--------------|-------------|----------|
 | Name | The visible name of the category. | **Yes** |
 | CategoryUniqueID | A unique ID for the category. <br>**Note: The value of this element can not be empty or contain white spaces.** | **Yes** |
-| CategoryUrl | A URL where visitors can shop by this category, if you have one. **Include the full URL, with the schema(http/https)**. **This must be anyURI valid, see below(1)** | Only if you use our *category_based* widget |
+| CategoryUrl | A URL where visitors can shop by this category, if you have one. **Include the full URL, with the schema(http/https)**. **This must be anyURI valid [1]** | Only if you use our *category_based* widget |
 | CategoryParentID | This is to support sub-category levels. If the category is a sub-category with a specific parent category, please use the parent category's CategoryUniqueID within this element.<br>**Note: The value of this element can not be empty or contain white spaces. If you don't have a valid ID to provide, please don't include the field** | NO |
 
 
@@ -179,15 +179,15 @@ Here is a list of possible elements you can use under `<Product>`. Please pay at
 |--------------|-------------|----------|
 | Name | The visible name of the product in your PDP.| **Yes** |
 | ProductUniqueID | This is the unique identifier of the product. We treat this as an *unique* key and your organization will use it to call our widgets in your PDP. ***Note: The value of this element can not be empty or contain white spaces.***| **Yes** |
-| ProductUrl | This is the URL we use when you click "Shop this look" in an Olapic viewer. This must take the visitor to a page to purchase the item. **Include the full URL, with the schema(http/https)**. **This must be anyURI valid, see below(1)**| **Yes** |
-| ImageUrl | This is the URL of the product primary image. The image that most represents your product in your PDP. **This must be anyURI valid, see below(1)**| **Yes** |
+| ProductUrl | This is the URL we use when you click "Shop this look" in an Olapic viewer. This must take the visitor to a page to purchase the item. **Include the full URL, with the schema(http/https)**. **This must be anyURI valid [1]**| **Yes** |
+| ImageUrl | This is the URL of the product primary image. The image that most represents your product in your PDP. **This must be anyURI valid [1]**| **Yes** |
 | Description | This is a short and plain text description of the product. We use this in your Olapic Admin page, your visitors will not see it. *No HTML elements are recognized in this element*. | No |
 | CategoryID | This is the unique identifier of the category related with this product. We use this in the *category_based* Widget. <br>**Note: The value here should match the `CategoryUniqueID` of the associated `<Category>` element. Note: The value of this element can not be empty or contain white spaces. If you don't have a valid ID to provide, please don't include the field** | Only if you use our *category_based* widget |
 | CategoriesID | Contains at least one `<CategoryID>` element. | Only if you have multiples categories associated with this product |
 | EAN | European Article Number, which is used world wide for marking retail goods. Can be a string of digits either 8 or 13 characters long. | No |
-| EANs | Contains at least one `<EAN>` element. | Only if you use `<EAN>` elements or *syndication* |
-| UPC | Universal Product Code, which is the 6 - or 12- digit bar code used for standard retail packaging in the United States. The UPC must contain numerals only, with no letters or characters. Further, spaces and hyphens disrupt ***syndication*** matching and must be removed. | Only if `<UPC>` elements must be used for *syndication* 
-| UPCs | Contains at least one `<UPC>` element. | Only if you use `<UPC>` elements or *syndication* |
+| EANs | Contains at least one `<EAN>` element. | Only if you use `<EAN>` elements or *syndication* [2] |
+| UPC | Universal Product Code, which is the 6 - or 12- digit bar code used for standard retail packaging in the United States. The UPC must contain numerals only, with no letters or characters. Further, spaces and hyphens disrupt ***syndication*** [2] matching and must be removed. | Only if `<UPC>` elements must be used for *syndication* [2]
+| UPCs | Contains at least one `<UPC>` element. | Only if you use `<UPC>` elements or *syndication* [2]|
 | Price | This is the most significative price your visitor can see in you PDP. *Do NOT include the currency*. Only include the number with decimals separated by '.'. Example: 23.99 | No |
 | Stock | This is an integer that represents your stock of this product | No |
 | Availability | This is a bool representing the current status of this product. Should be consistent with your site. We can set `INACTIVE` galleries dynamically based on this value. *Expected values: {true, false, 0, 1}* | No |
@@ -196,9 +196,10 @@ Here is a list of possible elements you can use under `<Product>`. Please pay at
 
 **Note: Fields marked as `required` must not be empty**
 
-**(1) All URLs are of type xsd:anyURI:
-URIs require that some characters be escaped with their hexadecimal Unicode code point preceded by the % character. This includes non-ASCII characters and some ASCII characters, namely control characters, spaces, and the following characters (unless they are used as delimiters in the URI): <>#%{}|\^`. For example, ../édition.html must be represented instead as ../%C3%A9dition.html, with the é escaped as %C3%A9. However, the anyURI type will accept these characters either escaped or unescaped. With the exception of the characters % and #, it will assume that unescaped characters are intended to be escaped when used in an actual URI, although the schema processor will do nothing to alter them. It is valid for an anyURI value to contain a space, but this practice is strongly discouraged. Spaces should instead be escaped using %20.
-**
+**[1] All URLs are of type xsd:anyURI:
+URIs require that some characters be escaped with their hexadecimal Unicode code point preceded by the % character. This includes non-ASCII characters and some ASCII characters, namely control characters, spaces, and the following characters (unless they are used as delimiters in the URI): <>#%{}|\^`. For example, ../édition.html must be represented instead as ../%C3%A9dition.html, with the é escaped as %C3%A9. However, the anyURI type will accept these characters either escaped or unescaped. With the exception of the characters % and #, it will assume that unescaped characters are intended to be escaped when used in an actual URI, although the schema processor will do nothing to alter them. It is valid for an anyURI value to contain a space, but this practice is strongly discouraged. Spaces should instead be escaped using %20.**
+
+**[2] Syndication is the process of distributing content collected from the main (Master) account down to the regional accounts.**
 
 #### Product Availability / Inventory Logic
 
