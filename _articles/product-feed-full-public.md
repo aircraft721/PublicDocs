@@ -193,6 +193,7 @@ Here is a list of possible elements you can use under `<Product>`. Please pay at
 | Availability | This is a bool representing the current status of this product. Should be consistent with your site. We can set `INACTIVE` galleries dynamically based on this value. *Expected values: {true, false, 0, 1}* | No |
 | Color | This is a string with the color name of the product. Useful for color specific products. | No |
 | ParentID | This is to support sub-streams levels. If this stream is not a root stream and, instead, it's a sub-stream of another stream, all you need to do is give us that ProductUniqueID here. We do the rest! Example: Color specific stream has as ParentID the non color specific stream.<br>**Note: The value of this element can not be empty or contain white spaces. If you don't have a valid ID to provide, please don't include the field** | Only if you need sub-stream support |
+| Extras | Additional relevant product information can be provided in this node. Read more in [Extras](#extras)| No|
 
 **Note: Fields marked as `required` must not be empty**
 
@@ -229,3 +230,42 @@ Child level `<Product>` will include the `<ParentID>` element to denote the Pare
 Theoretically, you can have infinite number of levels. However, please consult your Integration Engineer on best practices on the product hierarchy required by Olapic.
 
 **[!] Important Note:** We do not want any *size specific product* nodes unless it is a business requirement for the integration. Size levels are visually indistinguishable in product stock images as well as UGC, and their presence in the feed will complicate the moderation process.
+
+#### Extras <a name="extras"></a>
+
+This node allows you to deliver and store additional product information relevant to your implementation. Additional child nodes can be added as needed, as seen in the `Extras` node below:
+
+**Example:**
+
+```xml
+<Product>
+    <Name>OlaProd #0</Name>
+    <ProductUniqueID>prod-0</ProductUniqueID>
+    <ProductUrl>http://www.fakeshop.com/prod/?discount=1&amp;prodid=0</ProductUrl>
+    <ImageUrl>http://images.fakeshop.com/prod/?cat=123&amp;prodid=0</ImageUrl>
+    <Extras>
+        <Delivery>International</Delivery>
+        <Weight>4 lbs</Weight>
+    </Extras>
+<Product>
+```
+
+**Supporting Multiple Stock images**
+
+Similarly, you can also provide alternate stock images for each product within the `Extras` node, respecting the same naming convention as seen below:
+
+**Example:**
+
+```xml
+<Product>
+    <Name>OlaProd #0</Name>
+    <ProductUniqueID>prod-0</ProductUniqueID>
+    <ProductUrl>http://www.fakeshop.com/prod/?discount=1&amp;prodid=0</ProductUrl>
+    <ImageUrl>http://images.fakeshop.com/prod/?cat=123&amp;prodid=0</ImageUrl>
+    <Extras>
+        <ImageUrl01>http://images.fakeshop.com/prod/?cat=123&amp;prodid=0A</ImageUrl01>
+        <ImageUrl02>http://images.fakeshop.com/prod/?cat=123&amp;prodid=0B</ImageUrl02>
+    </Extras>
+</Product>
+```
+
