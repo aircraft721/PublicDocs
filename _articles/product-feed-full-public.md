@@ -41,12 +41,12 @@ Olapic supports 3 types of feeds:
 
 If you plan on giving us a custom feed (feeds that are not in Olapic or Google schemas), please be aware of the following:
 
-* Limited functionality applies. 
+* Limited functionality applies.
 * Specific parts of Olapic feed schema pertains to product features such as syndication, inventory updates, configurable/simple products, etc (not limited to the features mentioned).
 * We require the fields listed as **required**. You can rename them, but they are essential for a good implementation.
 * To ensure a successful import, we require verification from an Olapic tech resource.
 
-By default, XML feed in Olapic scehma will support the full feature-set. Please refer to the following table for the supported feature across 3 types of feeds, and consult your account team on which product feed would be optimal for your integration:
+By default, XML feed in Olapic schema will support the full feature-set. Please refer to the following table for the supported feature across 3 types of feeds, and consult your account team on which product feed would be optimal for your integration:
 
 |                        Olapic Feature                       | Olapic Standard Feed | Google Product Feed (Standard) | Anything else |
 | ----------------------------------------------------------- | -------------------- | ------------------------------ | ------------- |
@@ -59,8 +59,7 @@ By default, XML feed in Olapic scehma will support the full feature-set. Please 
 | Extra metadata support (stock, color, price)                | x                    | x                              |               |
 | Single Universal ID (UPC, EAN) Support           | x                    | x                              |               |
 | Multiple Universal ID (UPC, EAN) Support         | x                    |                                |               |
-| Multiple Category                                           | x                    |                                |               |
-| Category Hierarchy                                          | x                    | x                              |               |
+| Multiple Category                                           | x                    |                                |               |             |
 | Category Widget Support                                     | x                    |                                |               |
 | Product Hierarchy (color variants, etc)                     | x                    | x                              |               |
 | Schema Validation Support                                   | x                    |                                |               |
@@ -137,17 +136,15 @@ Here is an example of the general schema:
 
 We support category structure for each product in your e-commerce store. In order to use our *category_based widget*. If you want to use this feature, all you need to do is give us all the categories you will want to create in Olapic as child elements within the `<Categories>` element.
 
-The `<Categories>` element can contain as meny `<Category>` children nodes as you need.
+The `<Categories>` element can contain as many `<Category>` children nodes as you need.
 
 You can build the `<Category>` elements using the following children elements:
 
 | Element Name | Description | Required |
 |--------------|-------------|----------|
 | Name | The visible name of the category. | **Yes** |
-| CategoryUniqueID | A unique ID for the category. <br>**Note: The value of this element can not be empty or contain white spaces.** | **Yes** |
-| CategoryUrl | A URL where visitors can shop by this category, if you have one. **Include the full URL, with the schema(http/https)**. **This must be anyURI valid, see below(1)** | Only if you use our *category_based* widget |
-| CategoryParentID | This is to support sub-category levels. If the category is a sub-category with a specific parent category, please use the parent category's CategoryUniqueID within this element.<br>**Note: The value of this element can not be empty or contain white spaces. If you don't have a valid ID to provide, please don't include the field** | NO |
-
+| CategoryUniqueID | A unique ID for the category. <br>**Note: The value of this element can not be empty, contain white spaces or special characters such as ampersands (&).** | **Yes** |
+| CategoryUrl | A URL where visitors can shop by this category, if you have one. **Include the full URL, with the schema(http/https)**. **This must be anyURI valid [1]** | Only if you use our *category_based* widget |
 
 `Categories` node example:
 
@@ -162,12 +159,9 @@ You can build the `<Category>` elements using the following children elements:
 		<CategoryUniqueID>cat1002</CategoryUniqueID>
 		<Name>T-shirts</Name>
 		<CategoryUrl>http://www.myawesomestore.com/categories/mens/tshirts</CategoryUrl>
-		<CategoryParentID>cat1001</CategoryParentID>
 	</Category>
 </Categories>
 ```
-
-In this example, the first `<Category>` (*My Demo Category*) is a root category, and it has no parent category. However, it has a sub-category called *My Demo Sub-Category*. This is observed in the second `<Category>` element, which includes `CategoryParentID` element with the value as `CategoryUniqueID` of the first element.
 
 ### `<Product>` Element Definition
 
@@ -179,26 +173,28 @@ Here is a list of possible elements you can use under `<Product>`. Please pay at
 |--------------|-------------|----------|
 | Name | The visible name of the product in your PDP.| **Yes** |
 | ProductUniqueID | This is the unique identifier of the product. We treat this as an *unique* key and your organization will use it to call our widgets in your PDP. ***Note: The value of this element can not be empty or contain white spaces.***| **Yes** |
-| ProductUrl | This is the URL we use when you click "Shop this look" in an Olapic viewer. This must take the visitor to a page to purchase the item. **Include the full URL, with the schema(http/https)**. **This must be anyURI valid, see below(1)**| **Yes** |
-| ImageUrl | This is the URL of the product primery image. The image that most represents your product in your PDP. **This must be anyURI valid, see below(1)**| **Yes** |
+| ProductUrl | This is the URL we use when you click "Shop this look" in an Olapic viewer. This must take the visitor to a page to purchase the item. **Include the full URL, with the schema(http/https)**. **This must be anyURI valid [1]**| **Yes** |
+| ImageUrl | This is the URL of the product primary image. The image that most represents your product in your PDP. **This must be anyURI valid [1]**| **Yes** |
 | Description | This is a short and plain text description of the product. We use this in your Olapic Admin page, your visitors will not see it. *No HTML elements are recognized in this element*. | No |
 | CategoryID | This is the unique identifier of the category related with this product. We use this in the *category_based* Widget. <br>**Note: The value here should match the `CategoryUniqueID` of the associated `<Category>` element. Note: The value of this element can not be empty or contain white spaces. If you don't have a valid ID to provide, please don't include the field** | Only if you use our *category_based* widget |
 | CategoriesID | Contains at least one `<CategoryID>` element. | Only if you have multiples categories associated with this product |
 | EAN | European Article Number, which is used world wide for marking retail goods. Can be a string of digits either 8 or 13 characters long. | No |
-| EANs | Contains at least one `<EAN>` element. | Only if you use `<EAN>` elements or *syndication* |
-| UPC | Universal Product Code, which is the 6 - or 12- digit bar code used for standard retail packaging in the United States. The UPC must contain numerals only, with no letters or characters. Further, spaces and hyphens disrupt ***syndication*** matching and must be removed. | **Yes** |
-| UPCs | Contains at least one `<UPC>` element. | Only if you use `<UPC>` elements or *syndication* |
-| Price | This is the most significative price your visitor can see in you PDP. *Do NOT include the currency*. Only include the number with decimals separeted by '.'. Example: 23.99 | No |
+| EANs | Contains at least one `<EAN>` element. | Only if you use `<EAN>` elements or *syndication* [2] |
+| UPC | Universal Product Code, which is the 6 - or 12- digit bar code used for standard retail packaging in the United States. The UPC must contain numerals only, with no letters or characters. Further, spaces and hyphens disrupt ***syndication*** [2] matching and must be removed. | Only if `<UPC>` elements must be used for *syndication* [2]
+| UPCs | Contains at least one `<UPC>` element. | Only if you use `<UPC>` elements or *syndication* [2]|
+| Price | This is the most significative price your visitor can see in you PDP. *Do NOT include the currency*. Only include the number with decimals separated by '.'. Example: 23.99 | No |
 | Stock | This is an integer that represents your stock of this product | No |
 | Availability | This is a bool representing the current status of this product. Should be consistent with your site. We can set `INACTIVE` galleries dynamically based on this value. *Expected values: {true, false, 0, 1}* | No |
 | Color | This is a string with the color name of the product. Useful for color specific products. | No |
 | ParentID | This is to support sub-streams levels. If this stream is not a root stream and, instead, it's a sub-stream of another stream, all you need to do is give us that ProductUniqueID here. We do the rest! Example: Color specific stream has as ParentID the non color specific stream.<br>**Note: The value of this element can not be empty or contain white spaces. If you don't have a valid ID to provide, please don't include the field** | Only if you need sub-stream support |
+| Extras | Additional relevant product information can be provided in this node. Read more in [Extras](#extras)| No|
 
 **Note: Fields marked as `required` must not be empty**
 
-**(1)All URLs are of type xsd:anyURI:
-URIs require that some characters be escaped with their hexadecimal Unicode code point preceded by the % character. This includes non-ASCII characters and some ASCII characters, namely control characters, spaces, and the following characters (unless they are used as deliimiters in the URI): <>#%{}|\^`. For example, ../édition.html must be represented instead as ../%C3%A9dition.html, with the é escaped as %C3%A9. However, the anyURI type will accept these characters either escaped or unescaped. With the exception of the characters % and #, it will assume that unescaped characters are intended to be escaped when used in an actual URI, although the schema processor will do nothing to alter them. It is valid for an anyURI value to contain a space, but this practice is strongly discouraged. Spaces should instead be escaped using %20.
-**
+**[1] All URLs are of type xsd:anyURI:
+URIs require that some characters be escaped with their hexadecimal Unicode code point preceded by the % character. This includes non-ASCII characters and some ASCII characters, namely control characters, spaces, and the following characters (unless they are used as delimiters in the URI): <>#%{}|\^`. For example, ../édition.html must be represented instead as ../%C3%A9dition.html, with the é escaped as %C3%A9. However, the anyURI type will accept these characters either escaped or unescaped. With the exception of the characters % and #, it will assume that unescaped characters are intended to be escaped when used in an actual URI, although the schema processor will do nothing to alter them. It is valid for an anyURI value to contain a space, but this practice is strongly discouraged. Spaces should instead be escaped using %20.**
+
+**[2] Syndication is the process of distributing content collected from the main (Master) account down to the regional accounts.**
 
 #### Product Availability / Inventory Logic
 
@@ -228,3 +224,42 @@ Child level `<Product>` will include the `<ParentID>` element to denote the Pare
 Theoretically, you can have infinite number of levels. However, please consult your Integration Engineer on best practices on the product hierarchy required by Olapic.
 
 **[!] Important Note:** We do not want any *size specific product* nodes unless it is a business requirement for the integration. Size levels are visually indistinguishable in product stock images as well as UGC, and their presence in the feed will complicate the moderation process.
+
+#### Extras <a name="extras"></a>
+
+This node allows you to deliver and store additional product information relevant to your implementation. Additional child nodes can be added as needed, as seen in the `Extras` node below:
+
+**Example:**
+
+```xml
+<Product>
+    <Name>OlaProd #0</Name>
+    <ProductUniqueID>prod-0</ProductUniqueID>
+    <ProductUrl>http://www.fakeshop.com/prod/?discount=1&amp;prodid=0</ProductUrl>
+    <ImageUrl>http://images.fakeshop.com/prod/?cat=123&amp;prodid=0</ImageUrl>
+    <Extras>
+        <Delivery>International</Delivery>
+        <Weight>4 lbs</Weight>
+    </Extras>
+<Product>
+```
+
+**Supporting Multiple Stock images**
+
+Similarly, you can also provide alternate stock images for each product within the `Extras` node, respecting the same naming convention as seen below:
+
+**Example:**
+
+```xml
+<Product>
+    <Name>OlaProd #0</Name>
+    <ProductUniqueID>prod-0</ProductUniqueID>
+    <ProductUrl>http://www.fakeshop.com/prod/?discount=1&amp;prodid=0</ProductUrl>
+    <ImageUrl>http://images.fakeshop.com/prod/?cat=123&amp;prodid=0</ImageUrl>
+    <Extras>
+        <ImageUrl01>http://images.fakeshop.com/prod/?cat=123&amp;prodid=0A</ImageUrl01>
+        <ImageUrl02>http://images.fakeshop.com/prod/?cat=123&amp;prodid=0B</ImageUrl02>
+    </Extras>
+</Product>
+```
+
