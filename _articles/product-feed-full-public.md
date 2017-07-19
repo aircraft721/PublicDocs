@@ -60,7 +60,7 @@ By default, XML feed in Olapic schema will support the full feature-set. Please 
 | Single Universal ID (UPC, EAN) Support           | x                    | x                              |               |
 | Multiple Universal ID (UPC, EAN) Support         | x                    |                                |               |
 | Multiple Category                                           | x                    |                                |               |
-| Category Hierarchy                                          | x                    |                                |               |
+| Category Hierarchy                                          |                      |                                |               |
 | Category Widget Support                                     | x                    |                                |               |
 | Product Hierarchy (color variants, etc)                     | x                    | x                              |               |
 | Schema Validation Support                                   | x                    |                                |               |
@@ -144,10 +144,8 @@ You can build the `<Category>` elements using the following children elements:
 | Element Name | Description | Required |
 |--------------|-------------|----------|
 | Name | The visible name of the category. | **Yes** |
-| CategoryUniqueID | A unique ID for the category. <br>**Note: The value of this element can not be empty or contain white spaces.** | **Yes** |
+| CategoryUniqueID | A unique ID for the category. <br>**Note: The value of this element can not be empty, contain white spaces or special characters such as ampersands (&).** | **Yes** |
 | CategoryUrl | A URL where visitors can shop by this category, if you have one. **Include the full URL, with the schema(http/https)**. **This must be anyURI valid [1]** | Only if you use our *category_based* widget |
-| CategoryParentID | This is to support sub-category levels. If the category is a sub-category with a specific parent category, please use the parent category's CategoryUniqueID within this element.<br>**Note: The value of this element can not be empty or contain white spaces. If you don't have a valid ID to provide, please don't include the field** | NO |
-
 
 `Categories` node example:
 
@@ -162,12 +160,9 @@ You can build the `<Category>` elements using the following children elements:
 		<CategoryUniqueID>cat1002</CategoryUniqueID>
 		<Name>T-shirts</Name>
 		<CategoryUrl>http://www.myawesomestore.com/categories/mens/tshirts</CategoryUrl>
-		<CategoryParentID>cat1001</CategoryParentID>
 	</Category>
 </Categories>
 ```
-
-In this example, the first `<Category>` (*My Demo Category*) is a root category, and it has no parent category. However, it has a sub-category called *My Demo Sub-Category*. This is observed in the second `<Category>` element, which includes `CategoryParentID` element with the value as `CategoryUniqueID` of the first element.
 
 ### `<Product>` Element Definition
 
