@@ -59,7 +59,7 @@ By default, XML feed in Olapic schema will support the full feature-set. Please 
 | Extra metadata support (stock, color, price)                | x                    | x                              |               |
 | Single Universal ID (UPC, EAN) Support           | x                    | x                              |               |
 | Multiple Universal ID (UPC, EAN) Support         | x                    |                                |               |
-| Multiple Category                                           | x                    |                                |               |             |
+| Multiple Category                                           | x                    |                                |               |
 | Category Widget Support                                     | x                    |                                |               |
 | Product Hierarchy (color variants, etc)                     | x                    | x                              |               |
 | Schema Validation Support                                   | x                    |                                |               |
@@ -238,7 +238,7 @@ This node allows you to deliver and store additional product information relevan
     <ProductUrl>http://www.fakeshop.com/prod/?discount=1&amp;prodid=0</ProductUrl>
     <ImageUrl>http://images.fakeshop.com/prod/?cat=123&amp;prodid=0</ImageUrl>
     <Extras>
-        <Delivery>International </Delivery>
+        <Delivery>International</Delivery>
         <Weight>4 lbs</Weight>
     </Extras>
 <Product>
