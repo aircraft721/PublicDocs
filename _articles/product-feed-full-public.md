@@ -238,7 +238,7 @@ This node allows you to deliver and store additional product information relevan
     <ProductUrl>http://www.fakeshop.com/prod/?discount=1&amp;prodid=0</ProductUrl>
     <ImageUrl>http://images.fakeshop.com/prod/?cat=123&amp;prodid=0</ImageUrl>
     <Extras>
-        <Delivery>International</Delivery>
+        <Delivery>International </Delivery>
         <Weight>4 lbs</Weight>
     </Extras>
 <Product>
@@ -262,4 +262,3 @@ Similarly, you can also provide alternate stock images for each product within t
     </Extras>
 </Product>
 ```
-
