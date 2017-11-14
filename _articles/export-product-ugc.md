@@ -39,7 +39,18 @@ extension, Unix line ending, header row per below.
 1. UGC Image URL options:
   * Best image associated with the product (default)
   * Up to ten best images associated with the product
+<br><br>
 2. Optional product category information: up to 10 categories associated with the product will be added to a final "Categories" row.
+<br><br>
+3. Filters: 
+- You can choose the media size we export to the UGC Image URL.
+- (Optional) You also have the option of only exporting square images from one of these selected media sizes.
+  * Original - Original image without modifications (not necessarily square)
+        * When selected, you can export only square images greater than a specified pixel width
+  * Normal - 640x640px image. Maintains ratio (not necessarily square)
+  * Mobile - 320x320px image. Maintains ratio (not necessarily square)
+  * Thumbnail - 150x150px image. Maintains ratio (not necessarily square)
+  * Square - 90x90px image. Cropped and does not maintain ratio
 
 #### Default File Layout
 
@@ -50,7 +61,7 @@ extension, Unix line ending, header row per below.
 | 3 | URL | The product page URL as represented in the original feed provided by the client. |
 | 4 | Price | The product price as represented in the original feed provided by the client. |
 | 5 | Creator | &quot;Stock&quot; if the subsequent &quot;ImageUrl&quot; field is the stock photo from the client&#39;s product feed; &quot;Olapic&quot; if the &quot;ImageUrl&quot; is UGC collected by Olapic. Please note that if there is no Published with Rights UGC associated with that product, the &quot;Stock&quot; flag value will appear.  Otherwise the best UGC associated with that product. |
-| 6 | ImageUrl | Image URL of either the stock photo or the best Published with Rights UGC associated with that product.<br><br>Please note that with an Olapic UGC image url, the size and type of of the image you would like to use can be surfaced by updating a specific part of the url.  It is the &quot;normal&quot; part in this example url:  https://photorankmedia-a.akamaihd.net/media/7/d/h/7dhejp3/**normal**.jpg.<br><br>However, you can update on your end as follows:<br>- square - 90x90 px image. Cropped, does not maintain ratio.<br>- thumbnail - 150x150 px image. Maintains ratio.<br>- mobile - 320x320 px image. Maintains ratio.<br>- normal - 640x640 px image. Maintains ratio.<br>- original - Original image without modifications.|
+| 6 | ImageUrl | Image URL of either the stock photo or the best Published with Rights UGC associated with that product.|
 
 <br>
 
