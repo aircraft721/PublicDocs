@@ -44,6 +44,7 @@ extension, Unix line ending, header row per below.
 2. Filters: 
 - You can choose the media size we export to the UGC Image URL.
 - (Optional) You also have the option of only exporting square images from one of these selected media sizes.
+- Media Size options:
   * Original - Original image without modifications (not necessarily square)
         * When selected, you can export only square images greater than a specified pixel width
   * Normal - 640x640px image. Maintains ratio (not necessarily square)
