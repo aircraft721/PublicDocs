@@ -71,7 +71,7 @@ By default, XML feed in Olapic schema will support the full feature-set. Please 
 ### Validating Your Feed
 Please use the XML Schema Definition (.xsd) to validate the feed. You can find our schema here:
 
-[XML Schema Definition for a valid Olapic Feed](http://photorank.me/olapicProductFeedV1_0.xsd)
+[XML Schema Definition for a valid Olapic Feed](http://www.photorank.me/productFeed/olapic.v1.1.xsd)
 
 **Important Note:** Please validate your feed before sending it over. You can use any tool you want to validate the feed, but we encourage you to do a schema validation using our XSD file above to make sure everything lines up correctly.
 
@@ -227,7 +227,11 @@ Theoretically, you can have infinite number of levels. However, please consult y
 
 #### Extras <a name="extras"></a>
 
-This node allows you to deliver and store additional product information relevant to your implementation. Additional child nodes can be added as needed, as seen in the `Extras` node below:
+This node allows you to deliver and store additional product information relevant to your implementation. 
+
+**[!] Important Note:** Data stored in the `Extras` node is not accessible in the public API.
+
+Additional child nodes can be added as needed, as seen in the `Extras` node below:
 
 **Example:**
 
