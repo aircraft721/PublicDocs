@@ -2,7 +2,7 @@
 layout: article
 title: Creating a UGC Carousel
 resource: true
-categories: [API Resources]
+categories: [Javascript Widget]
 ---
 
 ## Table of Contents
