@@ -1,6 +1,6 @@
 ---
 layout: article
-title: Analytics API V2 Tracking Guidelines
+title: Analytics API Tracking Guidelines
 resource: true
 categories: [API Resources]
 ---
@@ -42,12 +42,13 @@ Separate from the widget, we should track events related to a specific **media**
 
 Each request must be associated to a particular type of widget that you are displaying on the page. There are 3 main widget types:
 
+- Best photos
+  - Any widgets that are displaying gallery content. E.g., Gallery widget that lives on a standalone page should be considered "Best photos" widget. Basically, anything that falls outside of "Category" or "Stream" widget types.
 - Category
   - Any widgets that are displaying category content. E.g., Widget that lives on a category display page.
 - Stream
   - Any widgets that are displaying product specific content. E.g., Widget that lives on a product display page.
-- Best photos
-  - Any widgets that are displaying gallery content. E.g., Gallery widget that lives on a standalone page should be considered "Best photos" widget. Basically, anything that falls outside of "Category" or "Stream" widget types.
+
 
 # Script Logic
 
@@ -82,7 +83,7 @@ The value for `__olapicU` cookie key should be used as the parameter value for `
 
 ## 2. Widget events
 
-Reference to API doc - http://data.photorank.me/api.html#widget-track
+Reference to API doc: **[Widget Track](http://data.photorank.me/api.html#widget-track)**
 
 As stated earlier, any events related to the actual widget should be tracked accordingly. The widget event conventions are as follows:
 
@@ -124,7 +125,7 @@ http://data.photorank.me/track/widget/db1a999d0783780b1a47aaddbc8dd793/best/move
 
 ## 3. Media events
 
-Reference to API doc - http://data.photorank.me/api.html#media-track
+Reference to API doc - **[Media Track](http://data.photorank.me/api.html#media-track)**
 
 Any events that are related to a specific media (photo thumbnail click, photo viewer events, etc) must be tracked.
 
@@ -176,7 +177,7 @@ http://data.photorank.me/track/widget/db1a999d0783780b1a47aaddbc8dd793/best/medi
 
 ## 4. Product `shop` event
 
-Reference to API doc -  http://data.photorank.me/api.html#media-track-best-photos-widget-"shop-this-product"-click
+Reference to API doc: **[Media Track - Shop This Product](http://data.photorank.me/api.html#media-track-best-photos-widget-shop-this-product-click)**
 
 When the user clicks on a product link related to the particular UGC being shown, we need to track the `shop` event. This link should actually be used in place of the `href` or the product link since it has a redirect logic on its own. For example, if you navigate to the working example below, you will be redirected to the link that you insert as `redirect_url` param.
 
