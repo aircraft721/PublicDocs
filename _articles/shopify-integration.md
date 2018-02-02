@@ -1,9 +1,29 @@
-## What does this do?
+---
+layout: article
+title: Shopify App Install Guide
+resource: true
+categories: [Product Feed]
+redirect_from: shopify.html
+---
+
+The following document will cover the installation steps & usage of the Olapic Shopify App.
+
+## Overview
 Simplifying the product feed integration steps and maintenance, Olapic developed the Olapic App for Shopify, which automatically exports all your products from your Shopify catalog to Olapic, saving time and ensuring accuracy. Specifically, the integration:
 
 1. Eliminates the need for a manually-created product feed using third-party feed plugins.
 1. Accurately translates your product catalog into an XML feed in Olapic schema (for more information, please refer to http://developer.olapic.com/articles/product-feed-full-public.html), ensuring proper product & schema matching.
 1. Ensures refreshed and up-to-date inventory, as the application will generate an updated feed from your store every 24 hours.
+
+## Table of contents
+
+- [Overview](#overview)
+- [Table of contents](#table-of-contents)
+- [Installation and Use](#installation-and-use)
+  * [Installation](#installation)
+  * [Usage](#usage)
+  * [Technical Info](#technical-info)
+    + [Export Sample](#export-sample)
 
 ## Installation and Use
 
