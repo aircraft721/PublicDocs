@@ -48,21 +48,19 @@ If you plan on giving us a custom feed (feeds that are not in Olapic or Google s
 
 By default, XML feed in Olapic schema will support the full feature-set. Please refer to the following table for the supported feature across 3 types of feeds, and consult your account team on which product feed would be optimal for your integration:
 
-|                        Olapic Feature                       | Olapic Standard Feed | Google Product Feed (Standard) | Anything else |
-| ----------------------------------------------------------- | -------------------- | ------------------------------ | ------------- |
-| Create new products                                         | x                    | x                              | x             |
-| Update existing products                                    | x                    | x                              | x             |
-| Set product availability (using stock or availability flag) | x                    | x                              |               |
-| Deactivate products (Availability = INACTIVE)               | x                    | x *                            |               |
-| Re-activate products (Availability = OK)                    | x                    | x *                            |               |
-| Remove products (delete completely)						  | x 					 |    							  | 			  |
-| Extra metadata support (stock, color, price)                | x                    | x                              |               |
-| Single Universal ID (UPC, EAN) Support           | x                    | x                              |               |
-| Multiple Universal ID (UPC, EAN) Support         | x                    |                                |               |
-| Multiple Category                                           | x                    |                                |               |
-| Category Widget Support                                     | x                    |                                |               |
-| Product Hierarchy (color variants, etc)                     | x                    | x                              |               |
-| Schema Validation Support                                   | x                    |                                |               |
+|                        Olapic Feature                       | Olapic Standard Feed | Anything else |
+| ----------------------------------------------------------- | -------------------- | ------------- |
+| Create new products                                         | x                    | x             |
+| Update existing products                                    | x                    | x             |
+| Set product availability (using stock or availability flag) | x                    | x             |
+| Remove products (delete completely)						  | x 					 |    			 |
+| Extra metadata support (stock, color, price)                | x                    | x             |
+| Single Universal ID (UPC, EAN) Support                      | x                    | x             |
+| Multiple Universal ID (UPC, EAN) Support                    | x                    |               |
+| Multiple Category                                           | x                    |               |
+| Category Widget Support                                     | x                    |               |
+| Product Hierarchy (color variants, etc)                     | x                    |               |
+| Schema Validation Support                                   | x                    |               |
 
 **[!] Important Note:** We accept Google feeds that are in accordance to the [Google Merchant Center Products Feed Specification](https://support.google.com/merchants/answer/188494?hl=en) only.
 
