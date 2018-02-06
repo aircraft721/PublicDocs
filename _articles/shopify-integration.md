@@ -29,9 +29,9 @@ Simplifying the product feed integration steps and maintenance, Olapic developed
 
 ### Installation
 
-1. To install the Olapic Shopify app, go to:
+1. To install the Olapic Shopify app, navigate to:
 
-    https://shopify.photorank.me/install?shop=<your_shopify_store_name>
+    [https://shopify.photorank.me/install?shop=**your_shopify_store_name**](https://shopify.photorank.me/install?shop=your_shopify_store_name)
 
     Your Shopify store name can be taken from your admin url. For example: `https://<your_shopify_store_name>.myshopify.com/admin/`
 
