@@ -3,6 +3,7 @@ layout: article
 title: Analytics API Tracking Guidelines
 resource: true
 categories: [API Resources]
+tags: analytics-api
 ---
 
 ## Table of contents
