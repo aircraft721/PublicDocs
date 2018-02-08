@@ -52,7 +52,7 @@
 
   h2 {
     font-size: 1.6em;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #ddd;
   }
 
   h3 {
@@ -155,7 +155,6 @@
 
   table tr {
     border-top: 1px solid #ccc;
-    background-color: #fff;
   }
 
   table tr:nth-child(2n) {
@@ -166,6 +165,9 @@
     max-width: 100%;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
+    -webkit-box-shadow: 0 5px 20px 1px rgba(0,0,0,0.1);
+    box-shadow: 0 5px 20px 1px rgba(0,0,0,0.2);
+    margin: 10px 0;
   }
 
   code {
@@ -290,6 +292,7 @@
     table {
       margin: 0 !important;
       min-width: 900px;
+      background-color: #f8f8f8;
 
       td {
         pre {
@@ -300,7 +303,8 @@
       }
     }
     td.gutter.gl {
-      padding: 0
+      width: 10px;
+      padding: 0;
     }
 
     pre.lineno {
