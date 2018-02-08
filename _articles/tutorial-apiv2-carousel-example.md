@@ -1,6 +1,6 @@
 ---
 layout: article
-title: Creating a UGC Carousel using APIv2
+title: "[Tutorial] Creating a UGC Carousel using APIv2"
 resource: true
 categories: [API Resources]
 tags: apiv2
