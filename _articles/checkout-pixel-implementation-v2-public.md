@@ -35,7 +35,8 @@ We need the following set of data mapped to the Olapic Checkout Code in order fo
 
 ## Instructions:
 
-1. Grab your account specific checkout code from the [Checkout code tab from Settings page](http://www.photorank.me/admin/settings#tabb_checkout). 
+1. Grab your account specific checkout code from the [Checkout code tab from Settings page](http://www.photorank.me/admin/settings#tabb_checkout).
+
     Your code shoud look like the below:
 
         <script type="text/javascript" data="olapic-checkout">
@@ -61,7 +62,6 @@ We need the following set of data mapped to the Olapic Checkout Code in order fo
             olapicCheckout.execute();
         });
         </script>
-        ```
 
 2. Please pay close attention to the "product loop" portion of the code. This is where you see:
 

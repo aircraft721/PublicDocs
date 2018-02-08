@@ -6,7 +6,15 @@ url: "http://developer.olapic.com"
 
 # Build settings
 markdown: kramdown
-highlighter: rouge
+kramdown:
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    default_lang: javascript
+    css_class: 'highlight'
+    span:
+      line_numbers: true
+    block:
+      line_numbers: true
 
 permalink: none
 
@@ -17,3 +25,5 @@ collections:
     output: true
 gems:
   - jekyll-redirect-from
+sass:
+  style: compact

@@ -34,7 +34,7 @@ Place the Olapic `<script>` tag _after_ the scripts that you wish to prioritize.
 
 See below for a code example:
 
-{% highlight html %}
+```html
 <html>
 <head>
     <meta charset="UTF-8">
@@ -53,7 +53,7 @@ See below for a code example:
     <script type="text/javascript" src="script_C.js"></script>
 </body>
 </html>
-{% endhighlight %}
+```
 
 **Note:** Please beware that moving the Olapic script lower on the page may result in a delayed "pop-in" effect depending on the speed of the prioritized assets being loaded on the page.
 
@@ -78,7 +78,7 @@ You will find below the sample code to implement the lazy-load functionality for
 
 **JS Callbacks:**
 
-{% highlight html %}
+```html
 <script type="text/javascript">
 var OlapicCallback = OlapicCallback || {};
 OlapicCallback.olapicSliderAfterRender = function(w){
@@ -103,17 +103,17 @@ OlapicCallback.olapicSliderAfterRender = function(w){
     });
 };
 </{{!}}script>
-{% endhighlight %}
+```
 
 **Item:**
 
-{% highlight html %}
+```html
 <li class="{{this.source}}">
   <a href="#" class="olapic-item" data-url="{{this._links.self.href}}" title="{{this.caption}}" data-image="{{this.images.mobile}}">
     <span class="olapic-type-{{this.type}}"><i></i></span>
   </a>
 </li>
-{% endhighlight %}
+```
 
 ## Configure Number of Photos
 You can optimize the number of photos that initially loads for widgets depending on the use case. 
