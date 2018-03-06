@@ -9,9 +9,11 @@ categories: [Product Feed]
 
 The Product Feed (sometimes referred to as "PF") is important because it unlocks many important features of the Olapic platform, such as: media syndication, shoppability, content organization, automatic updates, and more. Via the PF, we can import the product catalog data on your e-commerce website in an automated fashion. This includes product metadata such as: product name, product URL, product image URL, product availability, category information, etc.
 
+![Product Tagging GIF](../img/product-feed-tagging.gif){:width="600px"}
+
 When we process your Product Feed, each product from the Product Feed becomes a stream. You can think of streams as folders. When Olapic collects content on behalf of your brand, the content must be organized and tagged to different streams as they pass through the curation process. Once Olapic processes your Product Feed, you are able to tag the content to the streams that mirror the products from your Product Feed. The point being, you're matching the product that is represented in the user-generated image.
 
-![Product Tagging UI](../img/product-feed-tagging.gif){:width="600px"}
+![UGC Shopping GIF](../img/product-feed-ugc-shopping.gif){:width="600px"}
 
 With the product streams created in your Olapic account and the content tagged to corresponding product streams, Olapic widgets implemented across your site can display the user-generated images, along with the products tagged to the content. Your site visitors can interact with the user-generated content and click on the tagged products to navigate to the corresponding product page. This helps drive click-through to product pages & ultimately lead the visitor to conversion.
 
@@ -205,7 +207,7 @@ The XML in the Product Feed would look something like this:
 </Feed>
 ```
 
-**XML Explained:** The first `<Product>` node contains the master level product. The second product node represent the same T-Shirt as the master level product, but in the `Blue` color. You’ll notice they each have their own `<ProductUniqueID>`, but the color variant one have extra elements: `<Color>` and `<ParentID>`. `<ParentID>` references the master level product ID. We will use the `<ParentID>` value to create the relationships in our system. The `<Color>` node is optional but included in the above example for clarity. You will see the same logic for representing the relationship in the rest of the products as well.
+**XML Explained:** The first `<Product>` node contains the master level product. The second product node represent the same T-Shirt as the master level product, but in the `Blue` color. You'll notice they each have their own `<ProductUniqueID>`, but the color variant one have extra elements: `<Color>` and `<ParentID>`. `<ParentID>` references the master level product ID. We will use the `<ParentID>` value to create the relationships in our system. The `<Color>` node is optional but included in the above example for clarity. You will see the same logic for representing the relationship in the rest of the products as well.
 
 ## Categories
 
@@ -218,7 +220,7 @@ Categories can be leveraged in multiple ways, the most notable features enabled 
 
 ### Content by Category
 
-In the below example, we are showing an implemnetation of Olapic JS widget on a category level page on an e-commerce site. We are using the category ID to dynamically return the UGC that’s tagged to product streams that are related to the specific category defined in the Product Feed. 
+In the below example, we are showing an implemnetation of Olapic JS widget on a category level page on an e-commerce site. We are using the category ID to dynamically return the UGC that's tagged to product streams that are related to the specific category defined in the Product Feed. 
 
 ![Content by Category GIF](../img/product-feed-category-widget.gif){:width="600px"}
 
@@ -335,7 +337,7 @@ Here's an example of what the Product Feed looks like with Categories defined:
 
 One question that you should ask while vetting business requirements during the Product Feed creation is: "What is the desired outcome for associated images when products go out of stock, or are no longer sold?"
 
-If your "out of stock" product pages become inactive 404 pages, we want to avoid driving users to those pages. Additionally, you might not want users being directed to product pages if they can’t purchase, even if the page still is live.
+If your "out of stock" product pages become inactive 404 pages, we want to avoid driving users to those pages. Additionally, you might not want users being directed to product pages if they can't purchase, even if the page still is live.
 
 Product catalogs often change and we want to accurately reflect the state of your products. We can include an element in the Product Feed that tells Olapic whether the product is available or not. If it is not, we hide the specific product from any widget.
 
@@ -389,7 +391,7 @@ At minimum, we require 4 elements per product node:
 * `<ProductUrl>`
 * `<ImageUrl>`
 
-Beyond these elements, each product may contain more depending on the behavior/feature you’re looking to implement. 
+Beyond these elements, each product may contain more depending on the behavior/feature you're looking to implement. 
 
 For details on the product element definitions, visit: [http://developer.olapic.com/articles/product-feed-full-public.html#product-element-definition](http://developer.olapic.com/articles/product-feed-full-public.html#product-element-definition)
 
@@ -429,3 +431,232 @@ To ensure a smooth and efficient process, here are the main steps to follow:
 
     Once the Product Feed is successfully imported, your account is ready for moderation.
 
+# Common Mistakes & Errors
+
+In this section, you'll find some notable errors that we have seen in Product Feeds during the validation process. 
+
+We often receive files that have not been validated before sent to Olapic. 
+
+This results in a lot of common errors that can be easily fixed but were not caught by during the submission process. This causes more back and forth between Olapic and the developer, and can slow down Product Feed import process during onboarding.
+
+Before sending your Product Feed to Olapic, please make sure to refer to our guide on [validating your feed](http://developer.olapic.com/articles/product-feed-full-public.html#validating-your-feed).
+
+Below you will find some of the common errors found during feed validation  using the Olapic XSD.
+
+### **Spaces in ProductUniqueIDs**
+
+Spaces are sometimes included in the `<ProductUniqueID>`. If you ran your feed against our XSD, you can definitely catch this error!
+
+Example of an invalid XML:
+    
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<Feed>
+    <Products>
+        <Product>
+            <Name>Awesome Possum T-shirt in Blue</Name>
+            <ProductUniqueID>APTS BLUE</ProductUniqueID>
+            <ProductUrl>http://www.myawesomestore.com/products/APTS?sku=BLUE</ProductUrl>
+            <ImageUrl>http://www.myawesomestore.com/images/APTS-BLUE.jpg</ImageUrl>
+            <Availability>true</Availability>
+        </Product>
+    </Products>
+</Feed>
+```
+
+In the above example, note that `<ProductUniqueID>`` has a value of "APT BLUE" - this will fail our validations.
+
+In order to make this Product Feed valid, hyphen or underscore can be used (or remove the space entirely).
+
+Here's an example that uses hyphen:
+
+```diff
+<?xml version="1.0" encoding="UTF-8"?>
+<Feed>
+    <Products>
+        <Product>
+            <Name>Awesome Possum T-shirt in Blue</Name>
+-           <ProductUniqueID>APTS BLUE</ProductUniqueID>
++           <ProductUniqueID>APTS-BLUE</ProductUniqueID>
+            <ProductUrl>http://www.myawesomestore.com/products/APTS?sku=BLUE</ProductUrl>
+            <ImageUrl>http://www.myawesomestore.com/images/APTS-BLUE.jpg</ImageUrl>
+            <Availability>true</Availability>
+        </Product>
+    </Products>
+</Feed>
+```
+
+### **Element Syntax spelling errors / case-sensitive**
+
+Sometimes the element names do not follow the proper case that's defined in the specifications.
+
+Example of an invalid XML:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<Feed>
+    <Products>
+        <Product>
+            <name>Awesome Possum T-shirt in Blue</name>
+            <ProductUniqueID>APTS-BLUE</ProductUniqueID>
+            <productUrl>http://www.myawesomestore.com/products/APTS?sku=BLUE</productUrl>
+            <Imageurl>http://www.myawesomestore.com/images/APTS-BLUE.jpg</Imageurl>
+            <Availability>true</Availability>
+        </Product>
+    </Products>
+</Feed>
+```
+
+See how some of the elements are not formatted as specified in the Product Feed documentation.
+
+* `<name>` should be `<Name>`
+* `<productURL>` should be `<ProductUrl>`
+* `<Imageurl>` should be `<ImageUrl>`
+
+Here's a diff of the fix:
+
+```diff
+<?xml version="1.0" encoding="UTF-8"?>
+<Feed>
+    <Products>
+        <Product>
+-           <name>Awesome Possum T-shirt in Blue</name>
++           <Name>Awesome Possum T-shirt in Blue</Name>
+            <ProductUniqueID>APTS-BLUE</ProductUniqueID>
+-           <productUrl>http://www.myawesomestore.com/products/APTS?sku=BLUE</productUrl>
++           <ProductUrl>http://www.myawesomestore.com/products/APTS?sku=BLUE</ProductUrl>
+-           <Imageurl>http://www.myawesomestore.com/images/APTS-BLUE.jpg</Imageurl>
++           <ImageURL>http://www.myawesomestore.com/images/APTS-BLUE.jpg</ImageURL>
+            <Availability>true</Availability>
+        </Product>
+    </Products>
+</Feed>
+```
+
+### **Empty Elements**
+
+Invalid XML:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<Feed>
+    <Products>
+        <Product>
+            <Name>Awesome Possum T-shirt</Name>
+            <ProductUniqueID>APTS</ProductUniqueID>
+            <ProductUrl>http://www.myawesomestore.com/products/APTS</ProductUrl>
+            <ImageUrl>http://www.myawesomestore.com/images/APTS.jpg</ImageUrl>
+            <Availability></Availability>
+        </Product>
+    </Products>
+</Feed>
+```
+
+Can you spot the issue with the XML above? Although this example has all 4 required elements, the `<Availability>` element is empty and this will fail the XSD validation. If certain elements for products cannot be included (which can happen often when printing the master level product element), you can avoid XSD errors by removing the element for that product altogether.
+
+### **Not including one of the four required elements**
+
+Invalid XML:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<Feed>
+    <Products>
+        <Product>
+            <Name>Awesome Possum T-shirt in Blue</Name>
+            <ProductUniqueID>APTS-BLUE</ProductUniqueID>
+            <ProductUrl>http://www.myawesomestore.com/products/APTS?sku=BLUE</ProductUrl>
+            <Availability>true</Availability>
+        </Product>
+    </Products>
+</Feed>
+```
+
+Make sure you have all 4 required elements for each product node:
+
+* `<Name>`
+* `<ProductUniqueID>`
+* `<ProductUrl>`
+* `<ImageUrl>`
+
+If one of the required elements is missing, the XSD validation will fail.
+
+### **Proper encoding of special characters in URLs and HTML entities**
+
+Invalid XML:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<Feed>
+    <Products>
+        <Product>
+            <Name>Awesome Possum T-shirt</Name>
+            <ProductUniqueID>APTS</ProductUniqueID>
+            <ProductUrl>http://www.myawesomestore.com/products/APTS</ProductUrl>
+            <ImageUrl>http://www.myawesomestore.com/images/APTS.jpg</ImageUrl>
+            <Description>This shirt features an awesome & fuzzy possum.</Description>
+        </Product>
+    </Products>
+</Feed>
+```
+
+In the above example, you will see that there's an invalid special character `&`, which will break XML during parsing.
+
+* Characters such as `&` should be `&amp;`. The main illegal characters are `&`, `<` and `>` (as well as `"` or `'` in attributes).
+* Special characters (e.g., `é`, `œ`, `ä` etc) are not allowed in URL/URI per RPC specifications, we recommend that any special characters in URLs be encoded to avoid any issues.
+
+In regards to the special characters in URLs, URIs as defined by RFC 3986 (see Section 2: Characters) may contain any of the following characters:
+    
+```plain
+ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~:/?#[]@!$&'()*+,;=`
+```
+
+With that understanding, any character outside of the US-ASCII is considered a special character.
+
+### **Inclusion of size variant products**
+
+Size of a product is indistinguishable in UGC, except in special circumstances. Therefore, we recommend excluding size variants in your Product Feed. Try to keep the product hierarchy at the master or colorway level. If you wish to include variant products, please review the [Product Hierarchy](#business-requirements-for-the-product-feed) section of this document.
+
+### **Proper syntax for relating multiple categories**
+
+Invalid XML:
+
+```xml
+...
+        <Product>
+            <Name>Awesome Possum T-shirt in Blue</Name>
+            <ProductUniqueID>APTS-BLUE</ProductUniqueID>
+            <ProductUrl>http://www.myawesomestore.com/products/APTS?sku=BLUE</ProductUrl>
+            <ImageUrl>http://www.myawesomestore.com/images/APTS-BLUE.jpg</ImageUrl>
+            <CategoryID>cat1001</CategoryID>
+            <CategoryID>cat1002</CategoryID>
+            <Color>Blue</Color>
+            <ParentID>APTS</ParentID>
+        </Product>
+...
+```
+
+Notice that two categories are related to this product, but the syntax here is invalid.
+
+If adding more than one category per product, you need to nest the individual `<CategoryID>` elements inside `<CategoriesID>` element.
+
+Here's what the valid syntax would look like:
+
+```diff
+...
+        <Product>
+            <Name>Awesome Possum T-shirt in Blue</Name>
+            <ProductUniqueID>APTS-BLUE</ProductUniqueID>
+            <ProductUrl>http://www.myawesomestore.com/products/APTS?sku=BLUE</ProductUrl>
+            <ImageUrl>http://www.myawesomestore.com/images/APTS-BLUE.jpg</ImageUrl>
+-           <CategoryID>cat1001</CategoryID>
+-           <CategoryID>cat1002</CategoryID>
++           <CategoriesID>
++               <CategoryID>cat1001</CategoryID>
++               <CategoryID>cat1002</CategoryID>
++           </CategoriesID>
+            <Color>Blue</Color>
+            <ParentID>APTS</ParentID>
+        </Product>
+...
+```
