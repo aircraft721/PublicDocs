@@ -3,6 +3,7 @@ layout: article
 title: Intro to Product Feeds
 resource: true
 categories: [Product Feed]
+order: 0
 ---
 
 ![Product Feed Flow](../img/product-feed-intro.png){:width="600px" class="no-shadow"}
