@@ -5,7 +5,9 @@ resource: true
 categories: [Product Feed]
 ---
 
-# What is a Product Feed?
+## What is a Product Feed?
+
+![Product Feed](../img/product-feed-intro.png){:width="600px" class="no-shadow centered"}
 
 The Product Feed (sometimes referred to as "PF") is important because it unlocks many important features of the Olapic platform, such as: media syndication, shoppability, content organization, automatic updates, and more. Via the PF, we can import the product catalog data on your e-commerce website in an automated fashion. This includes product metadata such as: product name, product URL, product image URL, product availability, category information, etc.
 

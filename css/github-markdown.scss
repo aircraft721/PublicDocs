@@ -173,6 +173,16 @@
     -webkit-box-shadow: 0 5px 20px 1px rgba(0,0,0,0.1);
     box-shadow: 0 5px 20px 1px rgba(0,0,0,0.2);
     margin: 10px 0;
+
+    &.no-shadow {
+      -webkit-box-shadow: none;
+      box-shadow: none;
+    }
+
+    &.centered {
+      display: block;
+      margin: 0 auto;
+    }
   }
 
   code {
