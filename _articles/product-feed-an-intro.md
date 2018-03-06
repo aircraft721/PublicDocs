@@ -5,6 +5,7 @@ resource: true
 categories: [Product Feed]
 order: 0
 ---
+## Intro to Product Feeds
 
 ![Product Feed Flow](../img/product-feed-intro.png){:width="600px" class="no-shadow"}
 
@@ -46,7 +47,7 @@ While you can create the product streams manually in the Olapic dashboard, it's 
 	
 	Images tagged to product streams in the master account can be synced with the related child accounts as long as the matching product streams exist on both master and child accounts.
 
-# What type of feed is the best for the Olapic integration?
+## Best Product Feed Type for Olapic?
 
 Although Olapic can support a custom schema feed, sending the Product Feed in an Olapic schema enables your brand to take full advantage of feature set available in the Olapic platform. 
 
@@ -95,16 +96,20 @@ Here are the in-depth explanations and examples of each point mentioned above:
 
 	* Since everything is manually mapped for a custom feed, an update to a custom feed will also typically require an update on Olapic's side.
 
-# Business Requirements for the Product Feed
+## Considering Business Requirements
 
-Beyond determining what feed format to send the Product Feed in & the minimum required fields, another important piece of the Product Feed is determining which Product Hierarchy fits your UX needs in the front-end display of the website. Here are the Product Hierarchy types that you can include in your Product Feed and the UX impacts to consider.
+Beyond determining what feed format to send the Product Feed in & the minimum required fields, another important piece of the Product Feed is determining which Product Hierarchy fits your UX needs in the front-end display of the website. 
+
+### Product Hierarchy
+
+Here are the Product Hierarchy types that you can include in your Product Feed and the UX impacts to consider.
 
 * **Single-level Product Hierarchy**
 * **Multi-level Product Hierarchy**
 
 Let's dive into the UX impacts of each Product Hierarchy types.
 
-##  Single-level Product Hierarchy
+#### Single-level Product Hierarchy
 
 Single-level Product Hierarchy features products in the Product Feed represented as standalone products, without any relationships to other products.
 
@@ -146,7 +151,7 @@ The XML in the Product Feed would look something like this:
 
 **XML Explained:** Each `<Product>` node represents an individual product at the master level (terminology may differ depending on e-commerce systems and businesses). No specific color-variant products are included in the feed.
 
-## Multi-level Product Hierarchy
+#### Multi-level Product Hierarchy
 
 Multi-level Product Hierarchy features products in the Product Feed represented as grouped products with relationships that link back to master level products.
 
@@ -210,7 +215,7 @@ The XML in the Product Feed would look something like this:
 
 **XML Explained:** The first `<Product>` node contains the master level product. The second product node represent the same T-Shirt as the master level product, but in the `Blue` color. You'll notice they each have their own `<ProductUniqueID>`, but the color variant one have extra elements: `<Color>` and `<ParentID>`. `<ParentID>` references the master level product ID. We will use the `<ParentID>` value to create the relationships in our system. The `<Color>` node is optional but included in the above example for clarity. You will see the same logic for representing the relationship in the rest of the products as well.
 
-## Categories
+### Categories
 
 **Categories** are groups of products within the Olapic platform. If a product is associated with a category, then any content tagged to that product is automatically associated with that category.
 
@@ -219,19 +224,19 @@ Categories can be leveraged in multiple ways, the most notable features enabled 
 * Display content by category via Olapic JS widgets or Olapic REST API
 * Category filters in Gallery widget
 
-### Content by Category
+#### Content by Category
 
 In the below example, we are showing an implemnetation of Olapic JS widget on a category level page on an e-commerce site. We are using the category ID to dynamically return the UGC that's tagged to product streams that are related to the specific category defined in the Product Feed. 
 
 ![Content by Category GIF](../img/product-feed-category-widget.gif){:width="600px"}
 
-### Category Filters in Gallery widget
+#### Category Filters in Gallery widget
 
 Another use case for Categories in the Product Feed is the Category Filters (requires Olapic JS Widget). In below screengrab, you will see a Gallery type widget featuring a filter selection that allows the user to view different content based on the categories defined in the Product Feed.
 
 ![Category Filters in Gallery widget GIF](../img/product-feed-category-as-filters.gif){:width="600px"}
 
-### Example XML
+#### Example XML for Categories
 
 Here's an example of what the Product Feed looks like with Categories defined:
 
@@ -381,7 +386,7 @@ Here's an example of what the Product Feed looks like with product availability 
 
 In this example, we see a new element in each product node: `<Availability>`. Depending on whether the value within this element is `true` or `false`, we know whether to hide the product from the widget or not. Since we run a Product Feed import daily, this can be updated to reflect the current state of your product catalog.
 
-# Product Feed Documentation 
+## Product Feed Documentation 
 
 You can visit our documentation for the Product Feed in Olapic Schema here: [http://developer.olapic.com/articles/product-feed-full-public.html](http://developer.olapic.com/articles/product-feed-full-public.html)
 
@@ -396,7 +401,7 @@ Beyond these elements, each product may contain more depending on the behavior/f
 
 For details on the product element definitions, visit: [http://developer.olapic.com/articles/product-feed-full-public.html#product-element-definition](http://developer.olapic.com/articles/product-feed-full-public.html#product-element-definition)
 
-# Integration Steps
+## Integration Steps
 
 To ensure a smooth and efficient process, here are the main steps to follow:
 
@@ -432,7 +437,7 @@ To ensure a smooth and efficient process, here are the main steps to follow:
 
     Once the Product Feed is successfully imported, your account is ready for moderation.
 
-# Common Mistakes & Errors
+## Common Mistakes & Errors
 
 In this section, you'll find some notable errors that we have seen in Product Feeds during the validation process. 
 
@@ -487,7 +492,7 @@ Here's an example that uses hyphen:
 </Feed>
 ```
 
-### **Element Syntax spelling errors / case-sensitive**
+### **Spelling Errors / Case Sensitivity**
 
 Sometimes the element names do not follow the proper case that's defined in the specifications.
 
@@ -555,7 +560,7 @@ Invalid XML:
 
 Can you spot the issue with the XML above? Although this example has all 4 required elements, the `<Availability>` element is empty and this will fail the XSD validation. If certain elements for products cannot be included (which can happen often when printing the master level product element), you can avoid XSD errors by removing the element for that product altogether.
 
-### **Not including one of the four required elements**
+### **Leaving Out Required Elements**
 
 Invalid XML:
 
@@ -582,7 +587,7 @@ Make sure you have all 4 required elements for each product node:
 
 If one of the required elements is missing, the XSD validation will fail.
 
-### **Proper encoding of special characters in URLs and HTML entities**
+### **Encoding Issues**
 
 Invalid XML:
 
@@ -614,11 +619,11 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~:/?#[]@!$&'()*
 
 With that understanding, any character outside of the US-ASCII is considered a special character.
 
-### **Inclusion of size variant products**
+### **Size Variant Products**
 
 Size of a product is indistinguishable in UGC, except in special circumstances. Therefore, we recommend excluding size variants in your Product Feed. Try to keep the product hierarchy at the master or colorway level. If you wish to include variant products, please review the [Product Hierarchy](#business-requirements-for-the-product-feed) section of this document.
 
-### **Proper syntax for relating multiple categories**
+### **Invalid Categories Syntax**
 
 Invalid XML:
 
