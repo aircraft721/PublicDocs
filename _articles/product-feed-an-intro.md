@@ -339,7 +339,7 @@ Here's an example of what the Product Feed looks like with Categories defined:
 </Feed>
 ```
 
-## Out of Stock / Unavailable Products
+### Out of Stock / Unavailable Products
 
 One question that you should ask while vetting business requirements during the Product Feed creation is: "What is the desired outcome for associated images when products go out of stock, or are no longer sold?"
 
@@ -351,7 +351,7 @@ In this example, the product stream that is tagged to this image was marked as u
 
 ![Out of Stock / Unavailable Product Lightbox UI](../img/product-feed-out-of-stock.png){:width="600px"}
 
-### Example XML
+#### Example XML
 
 Here's an example of what the Product Feed looks like with product availability defined:
 
