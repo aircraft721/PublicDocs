@@ -156,12 +156,15 @@
 
   table th,
   table td {
-    border: 1px solid #ddd;
     padding: 6px 13px;
   }
 
-  table tr {
-    border-top: 1px solid #ccc;
+  table td {
+    border-right: 1px solid #ddd;
+
+    &:last-child {
+      border-right: none;
+    }
   }
 
   table tr:nth-child(2n) {
@@ -238,6 +241,8 @@
   .highlight { 
     background: #ffffff;
     overflow: auto;
+    border: 1px solid #ddd;
+    border-radius: 5px;
 
     .c { color: #999988; font-style: italic } /* Comment */
     .err { color: #a61717; background-color: #e3d2d2 } /* Error */
@@ -302,7 +307,7 @@
     /* line number box formatting */
     table {
       margin: 0 !important;
-      min-width: 900px;
+      min-width: 100%;
       background-color: #f8f8f8;
 
       td {
