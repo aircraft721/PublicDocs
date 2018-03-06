@@ -72,6 +72,15 @@
     font-size: 1em;
   }
 
+  /* Special Sticky! */
+  h1 {
+    position: sticky;
+    top: 0;
+    background: #fff;
+    z-index: 9;
+    line-height: 45px;
+  }
+
   p,
   blockquote,
   ul,
@@ -167,21 +176,17 @@
   }
 
   img {
+    display: block;
     max-width: 100%;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    -webkit-box-shadow: 0 5px 20px 1px rgba(0,0,0,0.1);
-    box-shadow: 0 5px 20px 1px rgba(0,0,0,0.2);
-    margin: 10px 0;
+    -webkit-box-shadow: 0 10px 30px 1px rgba(0,0,0,0.5);
+    box-shadow: 0 10px 30px 1px rgba(0,0,0,0.5);
+    margin: 30px auto;
 
     &.no-shadow {
       -webkit-box-shadow: none;
       box-shadow: none;
-    }
-
-    &.centered {
-      display: block;
-      margin: 0 auto;
     }
   }
 

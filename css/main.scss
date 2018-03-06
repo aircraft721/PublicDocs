@@ -178,6 +178,10 @@ pre {
 -------------------------------------------------- */
 /* Not required for template method. */
 
+.container {
+  width: 970px;
+}
+
 article h1:hover a.anchor-link,
 article h2:hover a.anchor-link,
 article h3:hover a.anchor-link,
