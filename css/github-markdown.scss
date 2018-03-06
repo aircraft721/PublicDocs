@@ -39,7 +39,6 @@
   h6 {
     margin: 1em 0 15px;
     padding: 0;
-    font-weight: 500;
     line-height: 1.7;
     cursor: text;
     position: relative;
@@ -57,10 +56,13 @@
 
   h3 {
     font-size: 1.3em;
+    font-weight: 600;
   }
 
   h4 {
-    font-size: 1.2em;
+    font-size: 1.1em;
+    font-weight: 700;
+    text-decoration: underline;
   }
 
   h5 {
@@ -154,12 +156,15 @@
 
   table th,
   table td {
-    border: 1px solid #ddd;
     padding: 6px 13px;
   }
 
-  table tr {
-    border-top: 1px solid #ccc;
+  table td {
+    border-right: 1px solid #ddd;
+
+    &:last-child {
+      border-right: none;
+    }
   }
 
   table tr:nth-child(2n) {
@@ -167,12 +172,18 @@
   }
 
   img {
+    display: block;
     max-width: 100%;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    -webkit-box-shadow: 0 5px 20px 1px rgba(0,0,0,0.1);
-    box-shadow: 0 5px 20px 1px rgba(0,0,0,0.2);
-    margin: 10px 0;
+    -webkit-box-shadow: 0 10px 30px 1px rgba(0,0,0,0.5);
+    box-shadow: 0 10px 30px 1px rgba(0,0,0,0.5);
+    margin: 30px auto;
+
+    &.no-shadow {
+      -webkit-box-shadow: none;
+      box-shadow: none;
+    }
   }
 
   code {
@@ -200,11 +211,9 @@
   .highlight pre,
   pre {
     background-color: #f8f8f8;
-    border: 1px solid #ddd;
     font-size: 13px;
     line-height: 19px;
     overflow: auto;
-    padding: 6px 10px;
     border-radius: 3px;
   }
 
@@ -232,6 +241,8 @@
   .highlight { 
     background: #ffffff;
     overflow: auto;
+    border: 1px solid #ddd;
+    border-radius: 5px;
 
     .c { color: #999988; font-style: italic } /* Comment */
     .err { color: #a61717; background-color: #e3d2d2 } /* Error */
@@ -296,7 +307,7 @@
     /* line number box formatting */
     table {
       margin: 0 !important;
-      min-width: 900px;
+      min-width: 100%;
       background-color: #f8f8f8;
 
       td {

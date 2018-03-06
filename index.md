@@ -32,8 +32,8 @@ layout: index
       <div class="row">
         <h2>{{ cat }}</h2>
         <ul class="article-list">
-
-        {% for article in site.articles %}
+        {% assign sorted_articles = site.articles | sort: "order" %}
+        {% for article in sorted_articles %}
           {% if article.resource == true %}
             {% for ac in article.categories %}
               {% if ac == cat %}
