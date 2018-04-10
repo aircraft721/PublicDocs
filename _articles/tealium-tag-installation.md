@@ -1,10 +1,9 @@
 ---
 layout: article
-title: Shopify App Install Guide
+title: Tealium Tag Install Guide
 resource: true
 categories: [3rd Party Integrations]
-redirect_from: shopify.html
-order: 1
+order: 2
 ---
 
 The following document will cover the installation steps & usage of the Olapic Shopify App.

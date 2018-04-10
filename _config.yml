@@ -19,7 +19,7 @@ kramdown:
 permalink: none
 
 # Custom settings
-category-list: [API Resources, Javascript Widget, Checkout Code, Product Feed, Exports]
+category-list: [API Resources, 3rd Party Integrations, Javascript Widget, Checkout Code, Product Feed, Exports]
 collections: 
   articles: 
     output: true
