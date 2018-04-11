@@ -6,110 +6,86 @@ categories: [3rd Party Integrations]
 order: 2
 ---
 
-The following document will cover the installation steps & usage of the Olapic Shopify App.
-
 ## Overview
-Simplifying the product feed integration steps and maintenance, Olapic developed the Olapic App for Shopify, which automatically exports all your products from your Shopify catalog to Olapic, saving time and ensuring accuracy. Specifically, the integration:
+There are two pre-confiugred Olapic tags that are currently available in Tealium's Tag Library:
 
-1. Eliminates the need for a manually-created product feed using third-party feed plugins.
-1. Accurately translates your product catalog into an XML feed in Olapic schema (for more information, please refer to http://developer.olapic.com/articles/product-feed-full-public.html), ensuring proper product & schema matching.
-1. Ensures refreshed and up-to-date inventory, as the application will generate an updated feed from your store every 24 hours.
+* Olapic Checkout Pixel Tag
+* Olapic Widget Instance Tag
+  * Static Widget
+  * Dynamic Widget (Stream or Category)
 
-## Table of contents
+This article covers the configuration steps for the above tag types.
 
-- [Overview](#overview)
-- [Table of contents](#table-of-contents)
-- [Installation and Use](#installation-and-use)
-  * [Installation](#installation)
-  * [Usage](#usage)
-  * [Technical Info](#technical-info)
-    + [Export Sample](#export-sample)
+## Widget Instance Tag
 
-## Installation and Use
+### Static Widget Configuration
 
-### Installation
+The following step-by-step will walk you through the necessarys steps required to configure a **static** type widget (i.e., widget showing content from a specific stream or category, or using the "All Photos" setting in the Olapic Widget Manager).
 
-1. To install the Olapic Shopify app, navigate to:
+1. First, search for the Olapic tags in the Tags tab in the Tealium TMS, click the "+ Add" button next to the Olapic Widget Instance:
 
-    [https://shopify.photorank.me/install?shop=**your_shopify_store_name**](https://shopify.photorank.me/install?shop=your_shopify_store_name)
+    ![](../img/tealium-tag-search.png)
 
-    Your Shopify store name can be taken from your admin url. For example: `https://<your_shopify_store_name>.myshopify.com/admin/`
+2. Fill in the fields under the Vendor configuration section. 
 
-2. You will be redirected to your admin, and the install prompt screen will show. Click "Install unlisted app" to continue.
+    ![](../img/tealium-tag-widget-config.png)
 
-    ![](../img/shopify-install-unlisted.jpg)
+    The `API Key`, `Widget Instance ID` values can be found within the Olapic widget code generated in the Widget Manager section within the Olapic admin (refer to the second screenshot below).
 
-3. Once the app is successfully installed, you will see the Olapic app listed alongside the rest of the your Shopify Apps:
+    ![](../img/tealium-tag-widget-instance.png)
 
-    ![](../img/shopify-installed.jpg)
+    <div class="bs-callout bs-callout-warning">
+      <h4>Container div element must exist</h4>
+      The container div with a specific ID that will hold the Olapic widget content is required in the DOM. If the element is not present on the the source level, use the <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Content-Modification-Extension/ta-p/12194>"><strong>Tealium Content Modification extension</strong></a> to inject the element dynamically.
+    </div>
 
-### Usage
+3. Set the appopriate Load Rules for the tag:
 
-1. After installing the Olapic Shopify app, click on the "Olapic App for Shopify" in the Apps section of the admin. When you first go to the Olapic App, it will look like this:
+    ![](../img/tealium-tag-widget-loadrules.png)
 
-    ![](../img/shopify-app-screen.jpg)
+4. *Optional* –  Data Mapping. You can use the Data Mapping to load the widget using the Development Mode flag. For more details around the Development Mode, please see [Technical Overview of the Activate Tab](https://olapic1.zendesk.com/hc/en-us/articles/218238663-Technical-Overview-of-the-Activate-Tab#Development-Mode).
 
-2. Click the "Enable" toggle button under the "Status" card to enable the job. Since you don’t have the FTP configuration details filled out yet, you will have to enter the FTP credentials provided by your Olapic Solutions Architect or Support team.
+    ![](../img/tealium-tag-widget-data-mapping.png)
 
-    ![](../img/shopify-ftp.jpg)
+5. Save and publish the changes to the tag in the appropriate profile. Once published, check the site page that matches the load rule to ensure the widget is loading correctly.
 
-    Please note that you will not be able to save unless you supply authorized credentials. 
+    ![](../img/tealium-tag-widget-homepage.png)
 
-3. Once you save you are done! The Olapic app will automatically export your products to the supplied FTP account around midnight UTC.
+### Dynamic Widget Configuration
 
-    If you have any issues or questions, please reach out to us at support@olapic.com and we will gladly assist you.
+The following step-by-step will walk you through the necessarys steps required to configure a **dynamic** type widget (i.e., widget showing content from a specific product stream or product category depending on key value passed on a category or product level page)
 
-### Technical Info
+1. First, search for the Olapic tags in the Tags tab in the Tealium TMS, click the "+ Add" button next to the Olapic Widget Instance:
 
-The Olapic app currently exports all products and uses collections as categories. It does not currently export child products (variants) but will do so in a later version.
+    ![](../img/tealium-tag-search.png)
 
-#### Export Sample
+2. Fill in the fields under the Vendor configuration section. 
 
-Below is an abbreviated export example from the Olapic App for Shopify:
+    ![](../img/tealium-tag-widget-config.png)
 
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<Feed>
-  <Categories>
-    <Category>
-      <CategoryUniqueID>368571467</CategoryUniqueID>
-      <Name>Home page</Name>
-      <CategoryUrl>https://olapicapptest.myshopify.com/collections/frontpage</CategoryUrl>
-    </Category>
-    <Category>
-      <CategoryUniqueID>479487371</CategoryUniqueID>
-      <Name>test collection</Name>
-      <CategoryUrl>https://olapicapptest.myshopify.com/collections/test-collection</CategoryUrl>
-    </Category>
-    <Category>
-      <CategoryUniqueID>368638091</CategoryUniqueID>
-      <Name>Test</Name>
-      <CategoryUrl>https://olapicapptest.myshopify.com/collections/test</CategoryUrl>
-    </Category>
-  </Categories>
-  <Products>
-    <Product>
-      <ProductUniqueID>3-4-sleeve-kimono-dress-coral</ProductUniqueID>
-      <Name>3/4 Sleeve Kimono Dress</Name>
-      <ProductUrl>https://olapicapptest.myshopify.com/product/3-4-sleeve-kimono-dress-coral</ProductUrl>
-      <ImageUrl>https://cdn.shopify.com/s/files/1/2311/9657/products/2015-03-20_Ashley_Look_20_23515_15565.jpg?v=1503939788</ImageUrl>
-      <CategoriesID>
-        <CategoryID>368571467</CategoryID>
-        <CategoryID>368638091</CategoryID>
-      </CategoriesID>
-      <Price>551.60</Price>
-      <Stock>7</Stock>
-      <Availability>true</Availability>
-    </Product>
-    <Product>
-      <ProductUniqueID>5-panel-hat</ProductUniqueID>
-      <Name>5 Panel Camp Cap</Name>
-      <ProductUrl>https://olapicapptest.myshopify.com/product/5-panel-hat</ProductUrl>
-      <ImageUrl>https://cdn.shopify.com/s/files/1/2311/9657/products/5-panel-hat_4ee20a27-8d5a-490e-a2fc-1f9c3beb7bf5.jpg?v=1503931618</ImageUrl>
-      <Price>48.00</Price>
-      <Stock>46</Stock>
-      <Availability>true</Availability>
-    </Product>
-  </Products>
-</Feed>
-```
+    The `API Key`, `Widget Instance ID` values can be found within the Olapic widget code generated in the Widget Manager section within the Olapic admin (refer to the second screenshot below).
+
+    ![](../img/tealium-tag-widget-instance-dynamic.png)
+
+    <div class="bs-callout bs-callout-warning">
+      <h4>Ensure that the Widget Source set to Dynamic</h4>
+      Be sure to use "Dynamic-Stream" or "Dynamic-Category" when setting up a dynamic widget.
+    </div>
+
+    <div class="bs-callout bs-callout-warning">
+      <h4>Container div element must exist</h4>
+      The container div with a specific ID that will hold the Olapic widget content is required in the DOM. If the element is not present on the the source level, use the <a href="https://community.tealiumiq.com/t5/iQ-Tag-Management/Content-Modification-Extension/ta-p/12194>"><strong>Tealium Content Modification extension</strong></a> to inject the element dynamically.
+    </div>
+
+3. Set the appopriate Load Rules for the tag:
+
+    ![](../img/tealium-tag-widget-loadrules.png)
+
+4. Set up the appropriate Data Mapping. You can use the Data Mapping to load the widget using a specific . For more details around the Development Mode, please see [Technical Overview of the Activate Tab](https://olapic1.zendesk.com/hc/en-us/articles/218238663-Technical-Overview-of-the-Activate-Tab#Development-Mode).
+
+    ![](../img/tealium-tag-widget-data-mapping.png)
+
+5. Save and publish the changes to the tag in the appropriate profile. Once published, check the site page that matches the load rule to ensure the widget is loading correctly.
+
+    ![](../img/tealium-tag-widget-homepage.png)
+
