@@ -2,9 +2,9 @@
 layout: article
 title: Shopify App Install Guide
 resource: true
-categories: [Product Feed]
+categories: [3rd Party Integrations]
 redirect_from: shopify.html
-order: 3
+order: 1
 ---
 
 The following document will cover the installation steps & usage of the Olapic Shopify App.
