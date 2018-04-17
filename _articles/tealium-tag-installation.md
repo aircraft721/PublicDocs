@@ -140,11 +140,15 @@ The following steps will walk you through how to enable the checkout pixel tag
 
     ![](../img/tealium-tag-checkout-data-mapping.png)
 
+    Example of the E-commerce Extension mapping configuration:
+
+    ![](../img/tealium-tag-checkout-extension.png)
+
     <div class="bs-callout bs-callout-info">
       <h4>Manually configuring the Data Mapping</h4>
-      Depending on your e-commerce site's setup and configuration, the data layer may be exposed using a different method rather than Tealium's UDO. If you wish to learn more about the source code of the Checkout Pixel script and see what type of data we require, please refer to our <a href="../checkout-pixel-implementation-v2-public.html#instructions">Checkout Pixel Implementation</a> article.
+      Depending on your e-commerce site's setup and configuration, the data layer may be exposed using a different method rather than Tealium's UDO (Universal Data Object). If you wish to learn more about the source code of the Checkout Pixel script and the required data mapping, please refer to our <a href="../checkout-pixel-implementation-v2-public.html#instructions">Checkout Pixel Implementation</a> article.
     </div>
 
-5. Save and publish the changes to the tag in the current profile. Once published, complete a full order checkout and ensure that the checkout code is loading correctly.
+5. Save and publish the changes to the tag in the current profile. Once published, complete a full order checkout and ensure that the checkout code is loading correctly. Please refer to the [Checkout Code Validation Guide](../articles/checkout-pixel-validation-guide.html) for the full end-to-end checkout code validation guide.
 
-    ![](../img/tealium-tag-widget-homepage.png)
+    ![](../img/tealium-tag-checkout-confirm.png)
