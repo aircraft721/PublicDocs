@@ -9,7 +9,9 @@ order: 2
 ## Overview
 This article covers the install steps for the Olapic tags available in Tealium's Tag Marketplace.
 
-Below are the available tags:
+If you are using Tealium as your Tag Management system to manage a variety of 3rd party codes, you're at the right place. Pre-configured Olapic tags are available in Tealium's Tag Marketplace so you can easily install Olapic widgets without the hassle of implementing additional Javascript code on your site.
+
+The following tags are available in the marketplace:
 
 * Olapic Checkout Pixel Tag
 * Olapic Widget Instance Tag
