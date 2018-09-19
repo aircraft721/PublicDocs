@@ -1,6 +1,6 @@
 ---
 layout: article
-title: "[Tutorial] Creating a UGC Carousel using APIv2"
+title: Creating a Carousel Widget using APIv2
 resource: true
 categories: [API Resources]
 tags: apiv2
@@ -17,9 +17,9 @@ tags: apiv2
 
 ## Overview
 
-For this tutorial, we will be creating a simple Javascript carousel using Olapic APIv2 to display the most recently published content. 
+In this tutorial, we will be creating a simple Javascript carousel using Olapic APIv2 to display the most recently published content from your Olapic account. 
 
-For the full technical specs for APIv2, please refer to the [APIv2 documentation](http://apiv2-docs.photorank.me/index.html).
+For Olapic APIv2's full technical specs, please refer to the [APIv2 documentation](http://apiv2-docs.photorank.me/index.html).
 
 #### Full Code
 
