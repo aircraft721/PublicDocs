@@ -3,13 +3,16 @@ layout: article
 title: Facebook Dynamic Ads Export
 resource: true
 categories: [Exports]
+redirect_from: "/articles/export-facebook-retargeting.html"
 ---
 
 # {{page.title}}
 
 ## Overview
 
-Olapic offers a flat file solution to integrate curated user-generated-content with Facebook Dynamic Ads (for more information, please visit [Facebook Help Center](https://www.facebook.com/business/help/1754901084745017?helpref=faq_content)). The feed was designed per [Facebook’s Product Catalog Guidelines](https://developers.facebook.com/docs/marketing-api/dynamic-product-ads/product-catalog).
+Olapic offers a flat file solution to integrate curated user-generated-content with Facebook Dynamic Ads. The feed was designed per [Facebook’s Product Catalog Guidelines](https://developers.facebook.com/docs/marketing-api/dynamic-product-ads/product-catalog){:target="_blank"}.
+
+For more information on Facebook Dynamic Ads, please visit [Facebook Help Center](https://www.facebook.com/business/help/1754901084745017?helpref=faq_content){:target="_blank"}.
 
 All curated content included in the flat-file export are fully controlled via the brand user in the Olapic admin.
 
