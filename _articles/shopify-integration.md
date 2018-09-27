@@ -3,7 +3,7 @@ layout: article
 title: Shopify App Install Guide
 resource: true
 categories: [3rd Party Integrations]
-redirect_from: shopify.html
+redirect_from: "/articles/shopify.html"
 order: 1
 ---
 
@@ -32,7 +32,7 @@ Simplifying the product feed integration steps and maintenance, Olapic developed
 
 1. To install the Olapic Shopify app, navigate to:
 
-    [https://shopify.photorank.me/install?shop=**your_shopify_store_name**](https://shopify.photorank.me/install?shop=your_shopify_store_name)
+    [https://shopify.photorank.me/install?shop=**your_shopify_store_name**](https://shopify.photorank.me/install?shop=your_shopify_store_name){:target="_blank"}
 
     Your Shopify store name can be taken from your admin url. For example: `https://<your_shopify_store_name>.myshopify.com/admin/`
 
