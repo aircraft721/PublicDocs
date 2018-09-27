@@ -192,6 +192,20 @@ pre {
 -------------------------------------------------- */
 /* Not required for template method. */
 
+#toc {
+  position: sticky;
+  top: .5rem;
+
+  .nav-link.active,
+  .nav-link.active:focus,
+  .nav-link.active:hover,
+  .nav > li > a:focus,
+  .nav > li > a:hover {
+    color: #F30D49;
+    border-left: 2px solid #F30D49;
+  }
+}
+
 article h1:hover a.anchor-link,
 article h2:hover a.anchor-link,
 article h3:hover a.anchor-link,
