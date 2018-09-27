@@ -3,7 +3,7 @@ layout: article
 title: Checkout Code Validation Guide
 resource: true
 categories: [Checkout Code]
-redirect_from: checkout-pixel-validation-guide.html
+redirect_from: "/articles/checkout-pixel-validation-guide.html"
 ---
 
 **Table of Contents**

@@ -1,48 +1,52 @@
 ---
 layout: article
-title: Standard Facebook Retargeting Export
+title: Facebook Dynamic Ads Export
 resource: true
 categories: [Exports]
+redirect_from: "/articles/export-facebook-retargeting.html"
 ---
+
+# {{page.title}}
 
 ## Overview
 
-Olapic offers a flat file CSV export solution (including basic product information and the associated best user generated content) for the purpose of integration curated UGC (user generated content) with Facebook's retargeting ads. The feed’s format was designed per [*Facebook’s Product Catalog Guidelines*](https://developers.facebook.com/docs/marketing-api/dynamic-product-ads/product-catalog). The associated UGC product images included in the CSV will be curated by the client, and have rights & permissions obtained from the original user who generated the photo.
+Olapic offers a flat file solution to integrate curated user-generated-content with Facebook Dynamic Ads. The feed was designed per [Facebook’s Product Catalog Guidelines](https://developers.facebook.com/docs/marketing-api/dynamic-product-ads/product-catalog){:target="_blank"}.
 
-There are two choices in regards to the inclusion of product image(s) in the feed:
+For more information on Facebook Dynamic Ads, please visit [Facebook Help Center](https://www.facebook.com/business/help/1754901084745017?helpref=faq_content){:target="_blank"}.
+
+All curated content included in the flat-file export are fully controlled via the brand user in the Olapic admin.
+
+There are two content sorting options that you can pick and choose from:
 * The image with the highest Photorank score associated with the product. Photorank is Olapic’s proprietary algorithm scoring system that predicts the success of a photo based on 40+ attributes.
 * The image with the highest click-through rate (CTR).
 
-Also note that if there is no rights-approved UGC associated with the product, the product id record will be excluded from the feed.
+Note that if there is no rights-approved UGC associated with the product, the product record will be excluded from the feed.
 
 ## File Specifications
 
 **File Naming Convention:**
 \[ClientNameID\]\_Olapic\_FB\_\[yyyymmddmiss\].csv
 
-**File Format:** Comma-delimited, double quote qualifier, .CSV
-extension, Unix line ending, header row per below.
+**File Format:** Comma-delimited, double quote qualifier, .CSV extension, UNIX line ending, header row
 
 **File Frequency:** Daily, full file refresh.
 
 **File Transfer Options:**
 
-1.  Push to your ftp or sftp server via password authentication
+1. Push to your FTP or SFTP server via password authentication
+2. Pick up from an Olapic hosted FTP account with password authentication, or an SFTP account with PEM key authentication
 
-2.  Pick up from an Olapic hosted ftp account with password authentication or an sftp account with PEM key authentication
+**File Drop Time:** Configurable from 23:00UTC to 10:00UTC
 
-**File Drop Time:** Configurable from 11pm to 10am UTC
-
-**UGC Selection Option:** Highest Photorank score or highest click-through rate.
+**Content Filtering Option:** Highest Photorank score or highest click-through rate.
 
 **File Layout Options:**
 
 1. UGC Image URL options:
   * Best image associated with the product (default)
   * Up to ten best images associated with the product (in one field, comma separated)
-<br><br>
-2. Filters: 
-- You can choose the media size we export to the UGC Image URL.
+2. Filters
+- You can choose the image resolution size we include as the UGC Image URL.
 - (Optional) You also have the option of only exporting square images from one of these selected media sizes.
 - Media Size options:
   * Original - Original image without modifications (not necessarily square)
@@ -51,7 +55,6 @@ extension, Unix line ending, header row per below.
   * Mobile - 320x320px image. Maintains ratio (not necessarily square)
   * Thumbnail - 150x150px image. Maintains ratio (not necessarily square)
   * Square - 90x90px image. Cropped and does not maintain ratio
-
 
 ##### File Layout:
 
