@@ -102,7 +102,7 @@ OlapicCallback.olapicSliderAfterRender = function(w){
         }
     });
 };
-</{{!}}script>
+{% raw %}</{{!}}script>{% endraw %}
 ```
 
 **Item:**

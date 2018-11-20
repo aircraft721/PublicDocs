@@ -70,7 +70,7 @@ In the `JS Callbacks` template of the widget style, you will find the following 
         // place your code here
     };
     */
-    </{{!}}script>
+    {% raw %}</{{!}}script>{% endraw %}
 
 #### olapicWallItemsInjected
 
