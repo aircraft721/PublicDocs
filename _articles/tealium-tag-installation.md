@@ -1,6 +1,6 @@
 ---
 layout: article
-title: Tealium Tag Install Guide
+title: Installing Olapic scripts using Tealium
 resource: true
 categories: [3rd Party Integrations]
 order: 2

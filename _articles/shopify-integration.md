@@ -1,6 +1,6 @@
 ---
 layout: article
-title: Shopify App Install Guide
+title: Exporting a Product Feed using the Olapic Shopify App
 resource: true
 categories: [3rd Party Integrations]
 redirect_from: "/articles/shopify.html"
