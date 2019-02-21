@@ -23,6 +23,7 @@ layout: index
         {% endif %}
       {% endfor %}
       </ul>
+      <li><a href="./articles/image-api.html" target="_parent">Image API v0.1 - BETA</a></li>
     </ul>
     
     {% for cat in site.category-list %}
