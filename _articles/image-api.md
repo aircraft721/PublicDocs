@@ -10,7 +10,7 @@ Image API is an essential tool to retrieve content from the Olapic Media Library
 
 [Email Studio](https://olapic1.zendesk.com/hc/en-us/articles/360021855492) is a great tool to generate code snippets for your Email Campaigns. It uses Image API as the content source and allows you to display dynamic content in email marketing campaigns. Please consult the how-to guide for more details.
 
-**This API is currently in BETA. It is is under developement and subject to any changes. Please consult your Olapic team before deploying on production.**
+**This API is currently in BETA. It is is under development and subject to any changes. Please consult your Olapic team before deploying on production.**
 
 ## Features
 1. Retrieve content from Olapic Media Library without writing code (logic is all in the URL)
@@ -124,7 +124,7 @@ These are the available query string parameters that you can customize to retrie
   - **Available options:** `center`, `attention`, and `entropy`.
     - `center`: focus on the center region of original image.
     - `entropy`: focus on the region with the highest [Shannon entropy](https://en.wikipedia.org/wiki/Entropy_%28information_theory%29).
-    - `attention`: focus on the region with the highest luminance frequency, colour saturation and presence of skin tones.
+    - `attention`: focus on the region with the highest luminance frequency, color saturation and presence of skin tones.
 
 - `crop_background`
 
