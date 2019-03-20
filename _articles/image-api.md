@@ -20,11 +20,11 @@ Image API is an essential tool to retrieve content from the Olapic Media Library
 
 ## API Endpoints
 
-The base hostname for the BETA version of the API is currently: `kd9sq2whx8.execute-api.us-east-1.amazonaws.com/`.
+The base hostname for the BETA version of the API is currently: `cdn-imageapi.photorank.me/`.
 
 You can access the root endpoint in the following route:
 ```
-https://kd9sq2whx8.execute-api.us-east-1.amazonaws.com/pbox/customer/{customer_id}
+https://cdn-imageapi.photorank.me/pbox/customer/{customer_id}
 ```
 
 ### API Methods
@@ -32,6 +32,8 @@ https://kd9sq2whx8.execute-api.us-east-1.amazonaws.com/pbox/customer/{customer_i
 | Method | URI                                          | Params                          | Description                                                                          |
 | ------ | -------------------------------------------- | ------------------------------- | ------------------------------------------------------------------------------------ |
 | `GET`  | `/pbox/customer/{customerId}/?{queryParams}` | `{customerId}`, `{queryParams}` | Returns a media using supplied params. See **Parameters** section below for details. |
+| `GET`  | `/pbox/customer/{customerId}/redirect/?{queryParams}` | `{customerId}`, `{queryParams}` | Endpoint for dynamic linking. See **Dynamic Linking** section below for details. |
+
 
 The `{customer_id}` value can be found via the [root APIv2 endpoint](http://apiv2-docs.photorank.me/#header-root-endpoint).
 
@@ -139,3 +141,52 @@ These are the available query string parameters that you can customize to retrie
     - this will produce a cropped image with the blurred background:
 
       ![](../img/imageapi-blurred-bg.jpeg)
+
+## Dynamic Linking
+Dynamic Linking provides redirection in order to send users to the stream or product URL associated with the image. The primary use case for this endpoint is to enable click-through to the stream or product URL associated with the image without having to layer additional data on the template side (i.e., supplying URLs from the ESP to the `href` of the `<a>` tag that wraps the `<img>` tag). 
+
+Using this endpoint, Olapic will dynamically route the user to the product page URL based on the product tagged to the image. If the photo is tagged to multiple products, then first product tagged will be used. In cases where images are not tagged to any active products, the `fallback_url` will be used instead (see **Parameters** section below).
+
+### Parameters
+The same parameters as the base image retrieval endpoint (except few parameters such as `crop_size`, API ignores these parameters) are provided to the the `/redirect/` endpoint of Image API. Then, Image API resolves the stream or product URL associated with the image and returns a `302` redirect with the URL placed in the `Location` header.
+
+An additional required parameter called `fallback_url` is introduced in this endpoint.
+
+- `fallback_url`
+  - **Required:** Yes
+  - **Description:** This parameter is required to account for scenarios where there are no stream or product URLs linked to the image.
+
+### Example
+For example, the following URL pattern can be used to retrieve a set of four most recently published images from customer ID `215815`:
+```
+https://cdn-imageapi.photorank.me/pbox/customer/215815/?auth_token=f48eeae508d1b1f3133df366679eb2b567bae5dc8058d69d679dc5cb140eb857&position=0
+https://cdn-imageapi.photorank.me/pbox/customer/215815/?auth_token=f48eeae508d1b1f3133df366679eb2b567bae5dc8058d69d679dc5cb140eb857&position=1
+https://cdn-imageapi.photorank.me/pbox/customer/215815/?auth_token=f48eeae508d1b1f3133df366679eb2b567bae5dc8058d69d679dc5cb140eb857&position=2
+https://cdn-imageapi.photorank.me/pbox/customer/215815/?auth_token=f48eeae508d1b1f3133df366679eb2b567bae5dc8058d69d679dc5cb140eb857&position=3
+```
+
+The redirect URLs for the above image URLs would be:
+```
+https://cdn-imageapi.photorank.me/pbox/customer/215815/redirect?auth_token=f48eeae508d1b1f3133df366679eb2b567bae5dc8058d69d679dc5cb140eb857&position=0&fallback_url=https%3A%2F%2Fmysite.com%2F
+https://cdn-imageapi.photorank.me/pbox/customer/215815/redirect?auth_token=f48eeae508d1b1f3133df366679eb2b567bae5dc8058d69d679dc5cb140eb857&position=1&fallback_url=https%3A%2F%2Fmysite.com%2F
+https://cdn-imageapi.photorank.me/pbox/customer/215815/redirect?auth_token=f48eeae508d1b1f3133df366679eb2b567bae5dc8058d69d679dc5cb140eb857&position=2&fallback_url=https%3A%2F%2Fmysite.com%2F
+https://cdn-imageapi.photorank.me/pbox/customer/215815/redirect?auth_token=f48eeae508d1b1f3133df366679eb2b567bae5dc8058d69d679dc5cb140eb857&position=3&fallback_url=https%3A%2F%2Fmysite.com%2F
+```
+
+The resulting HTML looks like this (see example on [Codepen](https://codepen.io/jhankim/pen/drqvNB)):
+```html
+<a href="https://cdn-imageapi.photorank.me/pbox/customer/215815/redirect?auth_token=f48eeae508d1b1f3133df366679eb2b567bae5dc8058d69d679dc5cb140eb857&position=0&fallback_url=https%3A%2F%2Fmysite.com%2F" target="_blank">
+  <img src="https://cdn-imageapi.photorank.me/pbox/customer/215815/?auth_token=f48eeae508d1b1f3133df366679eb2b567bae5dc8058d69d679dc5cb140eb857&position=0" />
+</a>
+<a href="https://cdn-imageapi.photorank.me/pbox/customer/215815/redirect?auth_token=f48eeae508d1b1f3133df366679eb2b567bae5dc8058d69d679dc5cb140eb857&position=1&fallback_url=https%3A%2F%2Fmysite.com%2F" target="_blank">
+  <img src="https://cdn-imageapi.photorank.me/pbox/customer/215815/?auth_token=f48eeae508d1b1f3133df366679eb2b567bae5dc8058d69d679dc5cb140eb857&position=1" />
+</a>
+<a href="https://cdn-imageapi.photorank.me/pbox/customer/215815/redirect?auth_token=f48eeae508d1b1f3133df366679eb2b567bae5dc8058d69d679dc5cb140eb857&position=2&fallback_url=https%3A%2F%2Fmysite.com%2F" target="_blank">
+  <img src="https://cdn-imageapi.photorank.me/pbox/customer/215815/?auth_token=f48eeae508d1b1f3133df366679eb2b567bae5dc8058d69d679dc5cb140eb857&position=2" />
+</a>
+<a href="https://cdn-imageapi.photorank.me/pbox/customer/215815/redirect?auth_token=f48eeae508d1b1f3133df366679eb2b567bae5dc8058d69d679dc5cb140eb857&position=3&fallback_url=https%3A%2F%2Fmysite.com%2F" target="_blank">
+  <img src="https://cdn-imageapi.photorank.me/pbox/customer/215815/?auth_token=f48eeae508d1b1f3133df366679eb2b567bae5dc8058d69d679dc5cb140eb857&position=3" />
+</a>
+```
+
+Once the above HTML renders, the user can click on the image to navigate to the stream or product URL associated with the image.
