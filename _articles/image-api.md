@@ -142,6 +142,20 @@ These are the available query string parameters that you can customize to retrie
 
       ![](../img/imageapi-blurred-bg.jpeg)
 
+- `include_username`
+
+  - **Required** No
+  - **Description** Overlays the image with an attribution referencing the instagram handle of the original image uploder
+  - **Accepted Values** `0` or `1`
+
+    - Original image without username included
+    
+      ![](../img/not_include_username.jpeg)
+
+    - Original image with username - `include_username=1`
+
+      ![](../img/included_username.jpeg)
+
 ## Dynamic Linking
 Dynamic Linking provides redirection in order to send users to the stream or product URL associated with the image. The primary use case for this endpoint is to enable click-through to the stream or product URL associated with the image without having to layer additional data on the template side (i.e., supplying URLs from the ESP to the `href` of the `<a>` tag that wraps the `<img>` tag). 
 
